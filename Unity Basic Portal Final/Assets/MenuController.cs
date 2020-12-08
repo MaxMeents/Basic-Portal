@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-//using GG.Infrastructure.Utils.Swipe;
+using GG.Infrastructure.Utils.Swipe;
 
 public class MenuController : MonoBehaviour
 {
@@ -470,6 +470,23 @@ public class MenuController : MonoBehaviour
     }
 
     // Update is called once per frame
+      public void OnSwipeHandler(string id){
+    	switch(id){
+    		case DirectionId.ID_UP:
+    			Up();
+    			break;
+    		case DirectionId.ID_DOWN:
+    			Down();
+    			break;	
+    		case DirectionId.ID_LEFT:
+    			Left();
+    			break;		
+    		case DirectionId.ID_RIGHT:
+    			Right();
+    			break;			
+    	}
+
+    }
     void Update()
     {
 		CastRay();
