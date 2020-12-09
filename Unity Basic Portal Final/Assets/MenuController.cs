@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using GG.Infrastructure.Utils.Swipe;
-
+using UnityEngine.EventSystems;
+using System;
+using System.IO;
 public class MenuController : MonoBehaviour
 {
 	public bool Result_1_Button_1 = false;
@@ -170,11 +172,11 @@ public class MenuController : MonoBehaviour
 		List_Written_Out_1_1_1_Images.Add("");
 		List_Written_Out_1_1_1.Add("Area 3");
 		List_Written_Out_1_1_1_Images.Add("");
-		List_Written_Out_1_1_1.Add("Area 4");
+		List_Written_Out_1_1_1.Add(" ");
 		List_Written_Out_1_1_1_Images.Add("");
-		List_Written_Out_1_1_1.Add("Area 5");
+		List_Written_Out_1_1_1.Add(" ");
 		List_Written_Out_1_1_1_Images.Add("");
-		List_Written_Out_1_1_1.Add("Area 6");
+		List_Written_Out_1_1_1.Add(" ");
 		List_Written_Out_1_1_1_Images.Add("");
 
 		List_Written_Out_1_1.Add("Mine");
@@ -423,15 +425,20 @@ public class MenuController : MonoBehaviour
 	    		if(i2 <= 2){
 	    			List_Result_1_Text_Gameobject[a].GetComponent<UnityEngine.UI.Text>().text = ""+List_Main_Menu_1_Container[i2];
 	    			List_Result_1_Images[i2].GetComponent<SpriteRenderer>().sprite = Resources.Load(""+List_Main_Menu_1_Container_Images[i2], typeof(Sprite)) as Sprite;
+	    				
 	    		}
 	    		if(i2 == 3){
 	    			List_Result_1_Text_Gameobject[a].GetComponent<UnityEngine.UI.Text>().text = ""+List_Main_Menu_1_Container[List_Main_Menu_1_Container.Count - 2];
 	    			List_Result_1_Images[i2].GetComponent<SpriteRenderer>().sprite = Resources.Load(""+List_Main_Menu_1_Container_Images[List_Main_Menu_1_Container_Images.Count - 2], typeof(Sprite)) as Sprite;	
+	    				
 	    		}
 	    		if(i2 == 4){
 	    			List_Result_1_Text_Gameobject[a].GetComponent<UnityEngine.UI.Text>().text = ""+List_Main_Menu_1_Container[List_Main_Menu_1_Container.Count - 1];
 	    			List_Result_1_Images[i2].GetComponent<SpriteRenderer>().sprite = Resources.Load(""+List_Main_Menu_1_Container_Images[List_Main_Menu_1_Container_Images.Count - 1], typeof(Sprite)) as Sprite;	
+	    			
 	    		}
+
+	    		
 	    		
 	    		a++;
 	    	}
@@ -442,14 +449,17 @@ public class MenuController : MonoBehaviour
 	    		if(i2 <= 2){
 	    			List_Result_2_Text_Gameobject[a].GetComponent<UnityEngine.UI.Text>().text = ""+List_Main_Menu_2_Container[i2];
 	    			List_Result_2_Images[i2].GetComponent<SpriteRenderer>().sprite = Resources.Load(""+List_Main_Menu_2_Container_Images[i2], typeof(Sprite)) as Sprite;
+	    			
 	    		}
 	    		if(i2 == 3){
 	    			List_Result_2_Text_Gameobject[a].GetComponent<UnityEngine.UI.Text>().text = ""+List_Main_Menu_2_Container[List_Main_Menu_2_Container.Count - 2];
 	    			List_Result_2_Images[i2].GetComponent<SpriteRenderer>().sprite = Resources.Load(""+List_Main_Menu_2_Container_Images[List_Main_Menu_2_Container_Images.Count - 2], typeof(Sprite)) as Sprite;	
+	    			
 	    		}
 	    		if(i2 == 4){
 	    			List_Result_2_Text_Gameobject[a].GetComponent<UnityEngine.UI.Text>().text = ""+List_Main_Menu_2_Container[List_Main_Menu_2_Container.Count - 1];
 	    			List_Result_2_Images[i2].GetComponent<SpriteRenderer>().sprite = Resources.Load(""+List_Main_Menu_2_Container_Images[List_Main_Menu_2_Container_Images.Count - 1], typeof(Sprite)) as Sprite;	
+	    			
 	    		}
 	    		
 	    		a++;
@@ -458,10 +468,15 @@ public class MenuController : MonoBehaviour
 	    a = 0;
 	    for(var i2 = 0; i2 < 5; i2++){	
 	    	for(var i = 0; i < 3; i++){
-		 	   if(List_Result_2_Text_Gameobject[a].GetComponent<UnityEngine.UI.Text>().text == ""){
+		 	   if(List_Result_2_Text_Gameobject[a].GetComponent<UnityEngine.UI.Text>().text == ""||List_Result_2_Text_Gameobject[a].GetComponent<UnityEngine.UI.Text>().text == " "){
 		 	   		List_Result_2[i2].SetActive(false);
 			    }else{
 			    	List_Result_2[i2].SetActive(true);
+			    }
+			    if(List_Result_1_Text_Gameobject[a].GetComponent<UnityEngine.UI.Text>().text == ""||List_Result_1_Text_Gameobject[a].GetComponent<UnityEngine.UI.Text>().text == " "){
+		 	   		List_Result_1[i2].SetActive(false);
+			    }else{
+			    	List_Result_1[i2].SetActive(true);
 			    }
 			    a++;
 			}
@@ -724,19 +739,37 @@ public class MenuController : MonoBehaviour
         	
         }
     }
+    void ShowOrNotShow(){
+
+    }
     void Up(){
-    	Up_Menu_1();    			     			     	
+    	if(List_Main_Menu_1_Container[5] == " "){
+
+    		}else{
+    			Up_Menu_1();    			     			     			
+    		}
+    	
+
     }
     void Down(){
-    	Down_Menu_1();	        	
+    	if(List_Main_Menu_1_Container[1] == " "){
+
+    		}else{
+    			Down_Menu_1();	        	
+    		}
+    	
     }
     void Right(){
-    	if(Current_Menu == 2){        		
+    	if(List_Main_Menu_2_Container[0] == ""){
+
+    	}else{
+    		if(Current_Menu == 2){        		
         		Set_Current_Menu_3();        		
         	}
         	if(Current_Menu == 1){
         		Set_Current_Menu_2();
-        	}        
+        	}     
+        }	   
     }
     void Left(){
     	if(Current_Menu == 2){
