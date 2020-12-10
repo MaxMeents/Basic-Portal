@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Result 2
   - Result 1
+  - MiningCamera
   layers:
   - Default
   - TransparentFX
