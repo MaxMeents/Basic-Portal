@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 7bb93d1e6c2ba594281990d2adb64c43
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Royal Initialen
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 47f54a755741fed4e935cf974c9d9099, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
