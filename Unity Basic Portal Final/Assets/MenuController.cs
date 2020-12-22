@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +10,7 @@ using System.IO;
 
 	public class MenuController : MonoBehaviour
 	{
+
 		public int x = 10;
 		public GameObject Mining_Area_1_Camera = null;
 		public bool Result_1_Button_1 = false;
@@ -85,6 +86,69 @@ using System.IO;
 		
 
 
+
+
+
+
+
+
+
+    public List<GameObject> NewItem = new List<GameObject>();
+    public int NewItem_Num = 0;
+    public List<int> NewItem_TimeSinceCreated = new List<int>();
+    public int LayerNum = 0;
+    public bool New_Item_Check = true;
+
+    public string Item_Name = "Alpha Centari Earrings";  
+    public int ItemAmount = 0;
+    public string ItemImage_Dir = "";
+
+    public List<string> Tiles_List_NameWithoutUnderscore = new List<string>();
+    public List<string> Tiles_List = new List<string>();
+
+
+
+    public List<int> Tiles_List_Rank = new List<int>();
+    public List<string> Rank_List = new List<string>();
+    public int ItemRank = 5;
+
+    public List<GameObject> NewItemsGainedArea_List_Name_Text_Shadow_1 = new List<GameObject>();
+    public List<GameObject> NewItemsGainedArea_List_Name_Text_Shadow_2 = new List<GameObject>();
+    public List<GameObject> NewItemsGainedArea_List_Name_Text_Main = new List<GameObject>();
+    public List<GameObject> NewItemsGainedArea_List_ItemAmount_Text_Shadow_1 = new List<GameObject>();
+    public List<GameObject> NewItemsGainedArea_List_ItemAmount_Text_Shadow_2 = new List<GameObject>();
+    public List<GameObject> NewItemsGainedArea_List_ItemAmount_Text_Main = new List<GameObject>();
+    public List<GameObject> NewItemsGainedArea_List_ItemImage = new List<GameObject>();
+    public List<GameObject> NewItemsGainedArea_List_LeftOfItemImage = new List<GameObject>();
+    public List<GameObject> NewItemsGainedArea_List_RightOfItemImage = new List<GameObject>();
+    public List<GameObject> NewItemsGainedArea_List_ItemRank_Main = new List<GameObject>();
+    public List<GameObject> NewItemsGainedArea_List_ItemRank_Small_1 = new List<GameObject>();
+    public List<GameObject> NewItemsGainedArea_List_ItemRank_Small_2 = new List<GameObject>();
+    public List<GameObject> NewItemsGainedArea_List_ItemRank_Small_3 = new List<GameObject>();
+    public List<string> ItemsGained_Item_Name = new List<string>();
+    public List<int> ItemsGained_ItemAmount = new List<int>();
+    public List<string> ItemsGained_ItemImage_Dir = new List<string>();
+    public List<int> ItemsGained_ItemRank = new List<int>();
+    public List<GameObject> NewItemsGainedArea_List_Item = new List<GameObject>();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		public List<GameObject> List_Result_1 = new List<GameObject>();
 		public List<GameObject> List_Result_1_Images = new List<GameObject>();
 		public List<GameObject> List_Result_1_Images_Texture = new List<GameObject>();
@@ -100,6 +164,8 @@ using System.IO;
 		public List<GameObject> List_Menus_Breakdown_Text_Shadow_1 = new List<GameObject>();
 		public List<GameObject> List_Menus_Breakdown_Text_Shadow_2 = new List<GameObject>();
 		public string Selected_Menu_Title = "Main Menu";
+    public List<string> Selected_Menu_Title_Background = new List<string>();
+    public List<string> Selected_Menu_Title_Selected_Background = new List<string>();
 		public string Current_Menu_1 = "";
 		public string Current_Menu_2 = "";
 		public string Current_Menu_3 = "";
@@ -302,6 +368,16 @@ public string currentSetMain = "Dirt";
 	    // Start is called before the first frame update
 	    void Start()
 	    {
+        
+        Rank_List.Add("Item Rank/coin-bronze");
+        Rank_List.Add("Item Rank/coin-silver");
+        Rank_List.Add("Item Rank/coin-plat");
+        Rank_List.Add("Item Rank/coin-gold");
+        Rank_List.Add("Item Rank/gold-ingot-1");
+        Rank_List.Add("Item Rank/diamond-1");
+        Rank_List.Add("Item Rank/diamond-stack");
+        Rank_List.Add("Item Rank/heart-1");
+
 	    	Dirt = Resources.Load("Tiles/Dirt", typeof(Sprite)) as Sprite;
     Rich_Soil = Resources.Load("Tiles/Rich_Soil", typeof(Sprite)) as Sprite;
     Very_Rich_Soil = Resources.Load("Tiles/Very_Rich_Soil", typeof(Sprite)) as Sprite;
@@ -361,7 +437,185 @@ public string currentSetMain = "Dirt";
     Packed_Snow = Resources.Load("Tiles/Packed_Snow", typeof(Sprite)) as Sprite;
     Hardened_Ice = Resources.Load("Tiles/Hardened_Ice", typeof(Sprite)) as Sprite;
     Compressed_Ice = Resources.Load("Tiles/Compressed_Ice", typeof(Sprite)) as Sprite;
+        Tiles_List.Add("Dirt");
+        Tiles_List_Rank.Add(0);
+        Tiles_List.Add("Rich_Soil");
+        Tiles_List_Rank.Add(2);
+        Tiles_List.Add("Very_Rich_Soil");
+        Tiles_List_Rank.Add(4);
+        Tiles_List.Add("Extremly_rich_soil");
+        Tiles_List_Rank.Add(6);
+        Tiles_List.Add("Grass");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Valunite");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Dark_Valunite");
+        Tiles_List_Rank.Add(2);
+        Tiles_List.Add("Bamboo");
+        Tiles_List_Rank.Add(3);
+        Tiles_List.Add("Wood");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Sandstone");
+        Tiles_List_Rank.Add(3);
+        Tiles_List.Add("Sand");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Packed_Sand");
+        Tiles_List_Rank.Add(4);
+        Tiles_List.Add("Extra_Coins");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Bonus_Coins");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Orange_Box");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Green_Box");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Cyan_Box");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Red_Box");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Magenta_Box");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Purple_Box");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Blue_Box");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Explosion");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Huge_Explosion");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Big_Explosion");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Timed_Explosion");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Enormous_Explosion");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Blue_Key");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Red_Key");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Green_Key");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Yellow_Key");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Steel");
+        Tiles_List_Rank.Add(3);
+        Tiles_List.Add("Refined_Steel");
+        Tiles_List_Rank.Add(4);
+        Tiles_List.Add("Mystery_Steel");
+        Tiles_List_Rank.Add(6);
+        Tiles_List.Add("Stone");
+        Tiles_List_Rank.Add(2);
+        Tiles_List.Add("Ruby");
+        Tiles_List_Rank.Add(5);
+        Tiles_List.Add("Diamond");
+        Tiles_List_Rank.Add(6);
+        Tiles_List.Add("Gold");
+        Tiles_List_Rank.Add(3);
+        Tiles_List.Add("Silver");
+        Tiles_List_Rank.Add(2);
+        Tiles_List.Add("Calcite");
+        Tiles_List_Rank.Add(3);
+        Tiles_List.Add("Coal");
+        Tiles_List_Rank.Add(2);
+        Tiles_List.Add("Aquamarine");
+        Tiles_List_Rank.Add(4);
+        Tiles_List.Add("Pixie_Dust");
+        Tiles_List_Rank.Add(5);
+        Tiles_List.Add("Emerald");
+        Tiles_List_Rank.Add(6);
+        Tiles_List.Add("Fossils");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Boxes");
+        Tiles_List_Rank.Add(3);
+        Tiles_List.Add("Old_Box");
+        Tiles_List_Rank.Add(5);
+        Tiles_List.Add("Unknown");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Stone_Bricks");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Ugly_Bricks");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Brick");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Forest_Crystal");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Blood_Crystal");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Sand_Crystal");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Ice_Crystal");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Snow_Crystal");
+        Tiles_List_Rank.Add(7);
+        Tiles_List.Add("Ice");
+        Tiles_List_Rank.Add(1);
+        Tiles_List.Add("Packed_Snow");
+        Tiles_List_Rank.Add(3);
+        Tiles_List.Add("Hardened_Ice");
+        Tiles_List_Rank.Add(4);
+        Tiles_List.Add("Compressed_Ice");
+        Tiles_List_Rank.Add(5);
 
+
+        Tiles_List_NameWithoutUnderscore.Add("Dirt");
+        Tiles_List_NameWithoutUnderscore.Add("Rich Soil");
+        Tiles_List_NameWithoutUnderscore.Add("Very Rich Soil");
+        Tiles_List_NameWithoutUnderscore.Add("Extremly rich soil");
+        Tiles_List_NameWithoutUnderscore.Add("Grass");
+        Tiles_List_NameWithoutUnderscore.Add("Valunite");
+        Tiles_List_NameWithoutUnderscore.Add("Dark Valunite");
+        Tiles_List_NameWithoutUnderscore.Add("Bamboo");
+        Tiles_List_NameWithoutUnderscore.Add("Wood");
+        Tiles_List_NameWithoutUnderscore.Add("Sandstone");
+        Tiles_List_NameWithoutUnderscore.Add("Sand");
+        Tiles_List_NameWithoutUnderscore.Add("Packed Sand");
+        Tiles_List_NameWithoutUnderscore.Add("Extra Coins");
+        Tiles_List_NameWithoutUnderscore.Add("Bonus Coins");
+        Tiles_List_NameWithoutUnderscore.Add("Orange Box");
+        Tiles_List_NameWithoutUnderscore.Add("Green Box");
+        Tiles_List_NameWithoutUnderscore.Add("Cyan Box");
+        Tiles_List_NameWithoutUnderscore.Add("Red Box");
+        Tiles_List_NameWithoutUnderscore.Add("Magenta Box");
+        Tiles_List_NameWithoutUnderscore.Add("Purple Box");
+        Tiles_List_NameWithoutUnderscore.Add("Blue Box");
+        Tiles_List_NameWithoutUnderscore.Add("Explosion");
+        Tiles_List_NameWithoutUnderscore.Add("Huge Explosion");
+        Tiles_List_NameWithoutUnderscore.Add("Big Explosion");
+        Tiles_List_NameWithoutUnderscore.Add("Timed Explosion");
+        Tiles_List_NameWithoutUnderscore.Add("Enormous Explosion");
+        Tiles_List_NameWithoutUnderscore.Add("Blue Key");
+        Tiles_List_NameWithoutUnderscore.Add("Red Key");
+        Tiles_List_NameWithoutUnderscore.Add("Green Key");
+        Tiles_List_NameWithoutUnderscore.Add("Yellow Key");
+        Tiles_List_NameWithoutUnderscore.Add("Steel");
+        Tiles_List_NameWithoutUnderscore.Add("Refined Steel");
+        Tiles_List_NameWithoutUnderscore.Add("Mystery Steel");
+        Tiles_List_NameWithoutUnderscore.Add("Stone");
+        Tiles_List_NameWithoutUnderscore.Add("Ruby");
+        Tiles_List_NameWithoutUnderscore.Add("Diamond");
+        Tiles_List_NameWithoutUnderscore.Add("Gold");
+        Tiles_List_NameWithoutUnderscore.Add("Silver");
+        Tiles_List_NameWithoutUnderscore.Add("Calcite");
+        Tiles_List_NameWithoutUnderscore.Add("Coal");
+        Tiles_List_NameWithoutUnderscore.Add("Aquamarine");
+        Tiles_List_NameWithoutUnderscore.Add("Pixie Dust");
+        Tiles_List_NameWithoutUnderscore.Add("Emerald");
+        Tiles_List_NameWithoutUnderscore.Add("Fossils");
+        Tiles_List_NameWithoutUnderscore.Add("Boxes");
+        Tiles_List_NameWithoutUnderscore.Add("Old Box");
+        Tiles_List_NameWithoutUnderscore.Add("Unknown");
+        Tiles_List_NameWithoutUnderscore.Add("Stone Bricks");
+        Tiles_List_NameWithoutUnderscore.Add("Ugly Bricks");
+        Tiles_List_NameWithoutUnderscore.Add("Brick");
+        Tiles_List_NameWithoutUnderscore.Add("Forest Crystal");
+        Tiles_List_NameWithoutUnderscore.Add("Blood Crystal");
+        Tiles_List_NameWithoutUnderscore.Add("Sand Crystal");
+        Tiles_List_NameWithoutUnderscore.Add("Ice Crystal");
+        Tiles_List_NameWithoutUnderscore.Add("Snow Crystal");
+        Tiles_List_NameWithoutUnderscore.Add("Ice");
+        Tiles_List_NameWithoutUnderscore.Add("Packed_Snow");
+        Tiles_List_NameWithoutUnderscore.Add("Hardened_Ice");
+        Tiles_List_NameWithoutUnderscore.Add("Compressed_Ice");
 	    	List_Menus_Breakdown.Add(GameObject.Find("Menus Breakdown/Menus Breakdown (0)"));
 	    	List_Menus_Breakdown_Images.Add(GameObject.Find("Menus Breakdown/Menus Breakdown (0)/Image (1)"));
 	    	List_Menus_Breakdown_Images_Texture.Add(GameObject.Find("Menus Breakdown/Menus Breakdown (0)/RawImage (1)"));
@@ -470,24 +724,40 @@ public string currentSetMain = "Dirt";
 			List_Main_Menu_2_Container_Images_Texture.Add("Transparent");
 			List_Written_Out_1_Info.Add("Main Menu");
 			List_Written_Out_1_Info.Add("Main Menu");
+      Selected_Menu_Title_Background.Add("Main Menu");
+      Selected_Menu_Title_Background.Add("3-PUh");
+      Selected_Menu_Title_Background.Add("3-Bh");
 			List_Written_Out_1_2_Info.Add("Main Menu");
 			List_Written_Out_1_2_Info.Add("Search the Web");
-					
+			Selected_Menu_Title_Background.Add("Search the Web");
+      Selected_Menu_Title_Background.Add("3-PUh");
+      Selected_Menu_Title_Background.Add("3-E");		
 			List_Written_Out_1_1_Info.Add("Main Menu");
 			List_Written_Out_1_1_Info.Add("Play Game");
+      Selected_Menu_Title_Background.Add("Play Game");
+      Selected_Menu_Title_Background.Add("3-SB");
+      Selected_Menu_Title_Background.Add("3-E");
 			
 			
 			List_Written_Out_1_1_1_Info.Add("Play Game");
 			List_Written_Out_1_1_1_Info.Add("Mine");
+      Selected_Menu_Title_Background.Add("Mine");
+      Selected_Menu_Title_Background.Add("3-SBLh");
+      Selected_Menu_Title_Background.Add("3-Bh");
 
 			
 			List_Written_Out_1_1_2_Info.Add("Play Game");
 			List_Written_Out_1_1_2_Info.Add("Forge");
+      Selected_Menu_Title_Background.Add("Forge");
+      Selected_Menu_Title_Background.Add("3-Bh");
+      Selected_Menu_Title_Background.Add("3-Oh");
 			//New Info List List_Written_Out
 			
 			List_Written_Out_Coal_Vain_Info.Add("Mine");
 			List_Written_Out_Coal_Vain_Info.Add("Coal Vain");
-			
+			Selected_Menu_Title_Background.Add("Coal Vain");
+      Selected_Menu_Title_Background.Add("3-DRh");
+      Selected_Menu_Title_Background.Add("3-E");
 			
 			//New List Area AHK
 			
@@ -662,6 +932,12 @@ public string currentSetMain = "Dirt";
 	    	List_Written_Out_1_2.Add("Youtube");
 	    	List_Written_Out_1_2_Images.Add("");
 	    	List_Written_Out_1_2_Images_Texture.Add("Transparent");
+        List_Written_Out_1_2.Add("Blank Space");
+        List_Written_Out_1_2_Images.Add("");
+        List_Written_Out_1_2_Images_Texture.Add("Transparent");
+        List_Written_Out_1_2.Add("Blank Space");
+        List_Written_Out_1_2_Images.Add("");
+        List_Written_Out_1_2_Images_Texture.Add("Transparent");
 	    	
 
 	    	List_Written_Out_1.Add("Save");
@@ -797,13 +1073,138 @@ public string currentSetMain = "Dirt";
 			Lists_Mining_Area_1_Layers.Add(Mining_Area_1_Layer_3);
 			Lists_Mining_Area_1_Layers.Add(Mining_Area_1_Layer_4);
 			Lists_Mining_Area_1_Layers.Add(Mining_Area_1_Layer_5);
+      for(var i = 0; i < 16; i++){
+        ItemsGained_Item_Name.Add("Blank");
+        ItemsGained_ItemAmount.Add(0);
+        ItemsGained_ItemImage_Dir.Add("Blank");
+        ItemsGained_ItemRank.Add(0);
+        
+      }
+      for(var i = 0; i < 16; i++){
+          NewItemsGainedArea_List_Name_Text_Shadow_1.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")/Title/Text Shadow 1"));
+          NewItemsGainedArea_List_Name_Text_Shadow_2.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")/Title/Text Shadow 2"));
+          NewItemsGainedArea_List_Name_Text_Main.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")/Title/Text Main"));
+          
+          NewItemsGainedArea_List_ItemAmount_Text_Shadow_1.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")/Item Amount/Text Shadow 1"));
+          NewItemsGainedArea_List_ItemAmount_Text_Shadow_2.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")/Item Amount/Text Shadow 2"));
+          NewItemsGainedArea_List_ItemAmount_Text_Main.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")/Item Amount/Text Main"));
+          NewItemsGainedArea_List_ItemImage.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")/Item Image/Image Of Item"));
+          NewItemsGainedArea_List_LeftOfItemImage.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")/Item Image/Question Mark 1"));
+          NewItemsGainedArea_List_RightOfItemImage.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")/Item Image/Question Mark 2"));
+          NewItemsGainedArea_List_ItemRank_Main.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")/Rank/Rank Big"));
+          NewItemsGainedArea_List_ItemRank_Small_1.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")/Rank/Rank Small 1"));
+          NewItemsGainedArea_List_ItemRank_Small_2.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")/Rank/Rank Small 2"));
+          NewItemsGainedArea_List_ItemRank_Small_3.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")/Rank/Rank Small 3"));
+          
+          NewItemsGainedArea_List_Item.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")"));
+        }
 			Get_Mining_Area_1_Variables();
 			 Mining_Area_1_Generate_All_Blocks();
 	    	Mining_Area_1_Camera = GameObject.Find("MiningCamera");
 	    	//Mining_Area_1_Function();
-	    	InvokeRepeating("Mining_Area_1_Mine_Blocks", 0f,0.001f);
+	    	InvokeRepeating("Mining_Area_1_Mine_Blocks", 0f,0.01f);
+        InvokeRepeating("NewItem_Function", 0f, .001f);
+        InvokeRepeating("NewItemsGainedArea", 0f, .01f);
 	    	//ConvertLists();
+
 	    }
+
+      void NewItemsGainedArea(){
+        /*we want to change item 1 to last item in list*/
+        
+        for(var i2 = 0; i2 < 16; i2++){
+          int whichIteminList = ItemsGained_Item_Name.Count - i2 - 1;
+          
+          if(ItemsGained_Item_Name[ItemsGained_Item_Name.Count - i2 - 1] == "Blank"){
+             NewItemsGainedArea_List_Item[i2].SetActive(false); 
+          }else{
+            NewItemsGainedArea_List_Item[i2].SetActive(true);  
+            for(var rank = 0; rank < Rank_List.Count;rank++){            
+              if(ItemsGained_ItemRank[whichIteminList] == rank){
+                  NewItemsGainedArea_List_ItemRank_Main[i2].GetComponent<SpriteRenderer>().sprite = Resources.Load(""+Rank_List[rank], typeof(Sprite)) as Sprite;
+                  NewItemsGainedArea_List_ItemRank_Small_1[i2].GetComponent<SpriteRenderer>().sprite = Resources.Load(""+Rank_List[rank], typeof(Sprite)) as Sprite;
+                  NewItemsGainedArea_List_ItemRank_Small_2[i2].GetComponent<SpriteRenderer>().sprite = Resources.Load(""+Rank_List[rank], typeof(Sprite)) as Sprite;
+                  NewItemsGainedArea_List_ItemRank_Small_3[i2].GetComponent<SpriteRenderer>().sprite = Resources.Load(""+Rank_List[rank], typeof(Sprite)) as Sprite;
+              }
+            }
+            
+            NewItemsGainedArea_List_Name_Text_Shadow_1[i2].GetComponent<UnityEngine.UI.Text>().text = ""+ItemsGained_Item_Name[whichIteminList];
+            NewItemsGainedArea_List_Name_Text_Shadow_2[i2].GetComponent<UnityEngine.UI.Text>().text = ""+ItemsGained_Item_Name[whichIteminList];
+            NewItemsGainedArea_List_Name_Text_Main[i2].GetComponent<UnityEngine.UI.Text>().text = ""+ItemsGained_Item_Name[whichIteminList];
+            NewItemsGainedArea_List_ItemAmount_Text_Shadow_1[i2].GetComponent<UnityEngine.UI.Text>().text = ""+ItemsGained_ItemAmount[whichIteminList];
+            NewItemsGainedArea_List_ItemAmount_Text_Shadow_2[i2].GetComponent<UnityEngine.UI.Text>().text = ""+ItemsGained_ItemAmount[whichIteminList];
+            NewItemsGainedArea_List_ItemAmount_Text_Main[i2].GetComponent<UnityEngine.UI.Text>().text = ""+ItemsGained_ItemAmount[whichIteminList];
+            NewItemsGainedArea_List_ItemImage[i2].GetComponent<SpriteRenderer>().sprite = Resources.Load(""+ItemsGained_ItemImage_Dir[whichIteminList], typeof(Sprite)) as Sprite;
+            NewItemsGainedArea_List_LeftOfItemImage[i2].GetComponent<SpriteRenderer>().sprite = Resources.Load("", typeof(Sprite)) as Sprite;
+            NewItemsGainedArea_List_RightOfItemImage[i2].GetComponent<SpriteRenderer>().sprite = Resources.Load("", typeof(Sprite)) as Sprite;
+            
+          }
+          
+        }
+
+      }
+      void NewItem_Function(){
+        
+        if(New_Item_Check == true){
+        ItemsGained_Item_Name.Add(Item_Name);
+        ItemsGained_ItemAmount.Add(ItemAmount);
+        ItemsGained_ItemImage_Dir.Add(ItemImage_Dir);
+        ItemsGained_ItemRank.Add(ItemRank);  
+          NewItem.Add(Instantiate(Resources.Load("Prefabs/New Item") as GameObject));
+          GameObject NewItems = GameObject.Find("New Items");
+          GameObject NewItem_Position_Holder = GameObject.Find("New Items/New Item Place Holder");
+
+          NewItem[NewItem_Num].transform.parent = NewItems.transform; 
+          NewItem[NewItem_Num].transform.position = NewItem_Position_Holder.transform.position;
+          NewItem[NewItem_Num].name = "New Object "+NewItem_Num;
+          GameObject Name_Text_Shadow_1 = GameObject.Find("New Object "+NewItem_Num+"/Title/Text Shadow 1");
+          GameObject Name_Text_Shadow_2 = GameObject.Find("New Object "+NewItem_Num+"/Title/Text Shadow 2");
+          GameObject Name_Text_Main = GameObject.Find("New Object "+NewItem_Num+"/Title/Text Main");
+          GameObject ItemAmount_Text_Shadow_1 = GameObject.Find("New Object "+NewItem_Num+"/Item Amount/Text Shadow 1");
+          GameObject ItemAmount_Text_Shadow_2 = GameObject.Find("New Object "+NewItem_Num+"/Item Amount/Text Shadow 2");
+          GameObject ItemAmount_Text_Main = GameObject.Find("New Object "+NewItem_Num+"/Item Amount/Text Main");
+          GameObject ItemImage = GameObject.Find("New Object "+NewItem_Num+"/Item Image/Image Of Item");
+          GameObject LeftOfItemImage = GameObject.Find("New Object "+NewItem_Num+"/Item Image/Question Mark 1");
+          GameObject RightOfItemImage = GameObject.Find("New Object "+NewItem_Num+"/Item Image/Question Mark 2");          
+          GameObject ItemRank_Main = GameObject.Find("New Object "+NewItem_Num+"/Rank/Rank Big");
+          GameObject ItemRank_Small_1 = GameObject.Find("New Object "+NewItem_Num+"/Rank/Rank Small 1");
+          GameObject ItemRank_Small_2 = GameObject.Find("New Object "+NewItem_Num+"/Rank/Rank Small 2");
+          GameObject ItemRank_Small_3 = GameObject.Find("New Object "+NewItem_Num+"/Rank/Rank Small 3");          
+          for(var rank = 0; rank < Rank_List.Count;rank++){            
+            if(ItemRank == rank){
+                ItemRank_Main.GetComponent<SpriteRenderer>().sprite = Resources.Load(""+Rank_List[rank], typeof(Sprite)) as Sprite;
+                ItemRank_Small_1.GetComponent<SpriteRenderer>().sprite = Resources.Load(""+Rank_List[rank], typeof(Sprite)) as Sprite;
+                ItemRank_Small_2.GetComponent<SpriteRenderer>().sprite = Resources.Load(""+Rank_List[rank], typeof(Sprite)) as Sprite;
+                ItemRank_Small_3.GetComponent<SpriteRenderer>().sprite = Resources.Load(""+Rank_List[rank], typeof(Sprite)) as Sprite;
+            }
+          }
+          Name_Text_Shadow_1.GetComponent<UnityEngine.UI.Text>().text = ""+Item_Name;
+          Name_Text_Shadow_2.GetComponent<UnityEngine.UI.Text>().text = ""+Item_Name;
+          Name_Text_Main.GetComponent<UnityEngine.UI.Text>().text = ""+Item_Name;
+          ItemAmount_Text_Shadow_1.GetComponent<UnityEngine.UI.Text>().text = ""+ItemAmount;
+          ItemAmount_Text_Shadow_2.GetComponent<UnityEngine.UI.Text>().text = ""+ItemAmount;
+          ItemAmount_Text_Main.GetComponent<UnityEngine.UI.Text>().text = ""+ItemAmount;
+          ItemImage.GetComponent<SpriteRenderer>().sprite = Resources.Load(""+ItemImage_Dir, typeof(Sprite)) as Sprite;
+          LeftOfItemImage.GetComponent<SpriteRenderer>().sprite = Resources.Load("", typeof(Sprite)) as Sprite;
+          RightOfItemImage.GetComponent<SpriteRenderer>().sprite = Resources.Load("", typeof(Sprite)) as Sprite;
+          ItemImage.layer = LayerNum+ 1;
+          NewItem[NewItem_Num].layer = LayerNum;
+          NewItem_TimeSinceCreated.Add(0);
+          NewItem_Num++;
+          LayerNum++;
+          if(LayerNum == 31){
+            LayerNum = 4;
+          }
+          New_Item_Check = false;
+        }   
+          
+       for(var i = 0; i <= NewItem_Num - 1;i++){
+           NewItem_TimeSinceCreated[i]++;
+           if(NewItem_TimeSinceCreated[i] >= 300){
+              Destroy(NewItem[i]);
+           } 
+       }
+      }
 	    /*
 	    void Mining_Area_1_Function(){
 	    	var i = 0; 
@@ -870,14 +1271,25 @@ public string currentSetMain = "Dirt";
 	    			Vector3 CamPos = new Vector3(Lists_Mining_Area_1_Layers[0][i].transform.position.x,Lists_Mining_Area_1_Layers[0][i].transform.position.y,Mining_Area_1_Camera.transform.position.z);
 	    			iTween.MoveTo(Mining_Area_1_Camera, iTween.Hash("position", CamPos, "time", .1f));	
 	    			x++;
-	    			if(x < 1000){
+	    			if(x < 50){
 	    				break;
 	    			}
-	    			if(x >= 1000){
+	    			if(x >= 50){
 	    				x = 0;
 	    			}
 	    			Lists_Mining_Area_1_Layers[0][i].SetActive(false);
+            for(var tilenum = 0; tilenum < Tiles_List.Count;tilenum++){
+              if(Lists_Mining_Area_1_Layers[0][i].GetComponent<SpriteRenderer>().sprite.name == Tiles_List_NameWithoutUnderscore[tilenum]){                  
+                Item_Name = Tiles_List_NameWithoutUnderscore[tilenum];
+                ItemImage_Dir = "Tiles/"+Tiles_List_NameWithoutUnderscore[tilenum]+" 256";
+                ItemAmount = 1;
+                ItemRank = Tiles_List_Rank[tilenum];
+                New_Item_Check = true;
 
+              }
+            
+              
+            }
 	    		}
 	    	}
 	    	if(Lists_Mining_Area_1_Layers[0][0].activeSelf == false){
@@ -904,7 +1316,9 @@ public string currentSetMain = "Dirt";
 				GenerateNextBlock();
 				Lists_Mining_Area_1_Layers[5][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + Block_Name, typeof(Sprite)) as Sprite;	    		
 				Lists_Mining_Area_1_Layers[0][i].SetActive(true);
+
 	    	}
+
 	    }
 	    /*
 	    void Mine_Area_1_Mining(){
@@ -1263,8 +1677,11 @@ public string currentSetMain = "Dirt";
 	    }
 	    void Update()
 	    {
+
+        Update_Menus_Breakdown();    
+        Set_Buttons();
 			CastRay();
-	    	Update_Menus_Breakdown();    	
+	    		
 	    	 if (Input.GetMouseButtonDown(0)){
 	    	 	if(Result_1_Button_1 == true){
 	    	 		Up();
@@ -1586,16 +2003,73 @@ public string currentSetMain = "Dirt";
 	        	}
 	        	
 	    }
+      void Set_Buttons(){
+        string Currently_Selcted = List_Result_1_Text_Gameobject[0].GetComponent<UnityEngine.UI.Text>().text;        
+        int ThisButton_Menu_1 = 0;
+        int ThisButton_Menu_2 = 0;
+      List_Menus_Breakdown[0].GetComponent<SpriteRenderer>().sprite = Resources.Load("Buttons/"+Selected_Menu_Title_Background[0+1], typeof(Sprite)) as Sprite;            
+      for(var whichTitle = 0; whichTitle < Selected_Menu_Title_Background.Count; whichTitle++){
+          if(Selected_Menu_Title_Background[whichTitle] == Current_Menu_1){
+              ThisButton_Menu_1 = whichTitle;
+              List_Menus_Breakdown[1].GetComponent<SpriteRenderer>().sprite = Resources.Load("Buttons/"+Selected_Menu_Title_Background[ThisButton_Menu_1+1], typeof(Sprite)) as Sprite;          
+          }
+          
+      }
+      for(var whichTitle = 0; whichTitle < Selected_Menu_Title_Background.Count; whichTitle++){
+          if(Selected_Menu_Title_Background[whichTitle] == Current_Menu_2){
+              ThisButton_Menu_1 = whichTitle;
+              List_Menus_Breakdown[2].GetComponent<SpriteRenderer>().sprite = Resources.Load("Buttons/"+Selected_Menu_Title_Background[ThisButton_Menu_1+1], typeof(Sprite)) as Sprite;
+          }
+          
+      }
+      for(var whichTitle = 0; whichTitle < Selected_Menu_Title_Background.Count; whichTitle++){
+          if(Selected_Menu_Title_Background[whichTitle] == Current_Menu_3){
+              ThisButton_Menu_1 = whichTitle;
+              List_Menus_Breakdown[3].GetComponent<SpriteRenderer>().sprite = Resources.Load("Buttons/"+Selected_Menu_Title_Background[ThisButton_Menu_1+1], typeof(Sprite)) as Sprite;
+          }
+          
+      }
+      for(var whichTitle = 0; whichTitle < Selected_Menu_Title_Background.Count; whichTitle++){
+          if(Selected_Menu_Title_Background[whichTitle] == Current_Menu_4){
+              ThisButton_Menu_1 = whichTitle;
+              List_Menus_Breakdown[4].GetComponent<SpriteRenderer>().sprite = Resources.Load("Buttons/"+Selected_Menu_Title_Background[ThisButton_Menu_1+1], typeof(Sprite)) as Sprite;
+          }
+          
+      }
+      for(var whichTitle = 0; whichTitle < Selected_Menu_Title_Background.Count; whichTitle++){
+          if(Selected_Menu_Title_Background[whichTitle] == Current_Menu_5){
+              ThisButton_Menu_1 = whichTitle;
+              List_Menus_Breakdown[5].GetComponent<SpriteRenderer>().sprite = Resources.Load("Buttons/"+Selected_Menu_Title_Background[ThisButton_Menu_1+1], typeof(Sprite)) as Sprite;
+          }
+          
+      }
+      for(var whichTitle = 0; whichTitle < Selected_Menu_Title_Background.Count; whichTitle++){
+          if(Selected_Menu_Title_Background[whichTitle] == Current_Menu_6){
+              ThisButton_Menu_1 = whichTitle;
+              List_Menus_Breakdown[6].GetComponent<SpriteRenderer>().sprite = Resources.Load("Buttons/"+Selected_Menu_Title_Background[ThisButton_Menu_1+1], typeof(Sprite)) as Sprite;
+          }
+          
+      }
+      for(var whichTitle = 0; whichTitle < Selected_Menu_Title_Background.Count; whichTitle++){
+          if(Selected_Menu_Title_Background[whichTitle] == Currently_Selcted){
+              ThisButton_Menu_2 = whichTitle;
+          }
+      }  
+      
+          
+        for(var i = 0; i < List_Result_1.Count;i++){
+          List_Result_1[i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/"+Selected_Menu_Title_Background[ThisButton_Menu_1+1], typeof(Sprite)) as Sprite;
+          List_Result_2[i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/"+Selected_Menu_Title_Background[ThisButton_Menu_2+1], typeof(Sprite)) as Sprite;
+        
+      }
+      List_Result_1[0].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/"+Selected_Menu_Title_Background[ThisButton_Menu_1+2], typeof(Sprite)) as Sprite;
+        
+      }
 	    void Set_Current_Menu_1(){
 	    	Current_Menu = 1;						
 	    	Current_Menu_1 = "Main Menu";
 	    	Current_Menu_2 = ""; 
-			for(var i = 0; i < List_Result_1.Count;i++){
-				List_Result_1[i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Menu 1", typeof(Sprite)) as Sprite;
-				List_Result_2[i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Menu 2", typeof(Sprite)) as Sprite;
-				
-			}
-			List_Result_1[0].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Option Blue Resized", typeof(Sprite)) as Sprite;
+			
 			init();
 	    		Update_Menus_Breakdown();
 	    		init();
@@ -1609,11 +2083,7 @@ public string currentSetMain = "Dirt";
 			List_Main_Menu_1_Container_Images = List_Main_Menu_2_Container_Images;
 			List_Main_Menu_1_Container_Images_Texture = List_Main_Menu_2_Container_Images_Texture;
 
-			for(var i = 0; i < List_Result_1.Count;i++){
-				List_Result_1[i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Menu 2", typeof(Sprite)) as Sprite;
-				List_Result_2[i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Menu 3", typeof(Sprite)) as Sprite;
-				
-			}
+			
 			List_Result_1[0].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Option Blue Resized", typeof(Sprite)) as Sprite;
 			init();
 	    		Update_Menus_Breakdown();
@@ -1628,12 +2098,7 @@ public string currentSetMain = "Dirt";
 			List_Main_Menu_1_Container_Images = List_Main_Menu_2_Container_Images;
 			List_Main_Menu_1_Container_Images_Texture = List_Main_Menu_2_Container_Images_Texture;
 			Debug.Log(List_Main_Menu_1_Container[0]);
-			for(var i = 0; i < List_Result_1.Count;i++){
-				List_Result_1[i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Menu 3", typeof(Sprite)) as Sprite;
-				List_Result_2[i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Menu 4", typeof(Sprite)) as Sprite;
-				
-			}
-			List_Result_1[0].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Option Blue Resized", typeof(Sprite)) as Sprite;
+			
 			init();
 	    		Update_Menus_Breakdown();
 	    		init();
@@ -1646,12 +2111,7 @@ public string currentSetMain = "Dirt";
 			List_Main_Menu_1_Container_Images = List_Main_Menu_2_Container_Images;
 			List_Main_Menu_1_Container_Images_Texture = List_Main_Menu_2_Container_Images_Texture;
 			Debug.Log(List_Main_Menu_1_Container[0]);
-			for(var i = 0; i < List_Result_1.Count;i++){
-				List_Result_1[i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Menu 4", typeof(Sprite)) as Sprite;
-				List_Result_2[i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Menu 5", typeof(Sprite)) as Sprite;
-				
-			}
-			List_Result_1[0].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Option Blue Resized", typeof(Sprite)) as Sprite;
+			
 			init();
 	    		Update_Menus_Breakdown();
 	    		init();
@@ -1664,12 +2124,7 @@ public string currentSetMain = "Dirt";
 			List_Main_Menu_1_Container_Images = List_Main_Menu_2_Container_Images;
 			List_Main_Menu_1_Container_Images_Texture = List_Main_Menu_2_Container_Images_Texture;
 			Debug.Log(List_Main_Menu_1_Container[0]);
-			for(var i = 0; i < List_Result_1.Count;i++){
-				List_Result_1[i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Menu 5", typeof(Sprite)) as Sprite;
-				List_Result_2[i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Menu 6", typeof(Sprite)) as Sprite;
-				
-			}
-			List_Result_1[0].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Option Blue Resized", typeof(Sprite)) as Sprite;
+			
 			init();
 	    		Update_Menus_Breakdown();
 	    		init();
@@ -1682,12 +2137,7 @@ public string currentSetMain = "Dirt";
 			List_Main_Menu_1_Container_Images = List_Main_Menu_2_Container_Images;
 			List_Main_Menu_1_Container_Images_Texture = List_Main_Menu_2_Container_Images_Texture;
 
-			for(var i = 0; i < List_Result_1.Count;i++){
-				List_Result_1[i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Menu 5", typeof(Sprite)) as Sprite;
-				List_Result_2[i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Menu 6", typeof(Sprite)) as Sprite;
-				
-			}
-			List_Result_1[0].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Buttons/Option Blue Resized", typeof(Sprite)) as Sprite;
+			
 			init();
 	    		Update_Menus_Breakdown();
 	    		init();
