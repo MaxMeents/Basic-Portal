@@ -8,6 +8,7 @@ TagManager:
   - Result 1
   - MiningCamera
   - ItemsGainedCamrea
+  - New Items Gained Popup Camera
   layers:
   - Default
   - TransparentFX

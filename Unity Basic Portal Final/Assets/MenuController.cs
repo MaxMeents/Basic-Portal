@@ -10,7 +10,11 @@ using System.IO;
 
 	public class MenuController : MonoBehaviour
 	{
-
+    public GameObject NewItemsGained_Popup_Camera = null;
+    public string Currently_Selected = "";
+    public GameObject Mining_Big_Camera = null;
+    public GameObject Mining_Small_Camera = null;
+    public GameObject ItemsGained_Camera = null;
 		public int x = 10;
 		public GameObject Mining_Area_1_Camera = null;
 		public bool Result_1_Button_1 = false;
@@ -368,7 +372,10 @@ public string currentSetMain = "Dirt";
 	    // Start is called before the first frame update
 	    void Start()
 	    {
-        
+        Mining_Big_Camera = GameObject.Find("Big Camera Viewport");
+        Mining_Small_Camera = GameObject.Find("Small Camera Viewport");
+        ItemsGained_Camera = GameObject.Find("Items Gained Viewport");
+        NewItemsGained_Popup_Camera = GameObject.Find("New Items Gained Popup Viewport");
         Rank_List.Add("Item Rank/coin-bronze");
         Rank_List.Add("Item Rank/coin-silver");
         Rank_List.Add("Item Rank/coin-plat");
@@ -1676,10 +1683,46 @@ public string currentSetMain = "Dirt";
 
 	    }
 	    void Update()
-	    {
-
+  	  {
+        
         Update_Menus_Breakdown();    
         Set_Buttons();
+        if(Currently_Selected == "Coal Vain"||Currently_Selected == "Coal Vain : On"){
+            Mining_Big_Camera.SetActive(true);
+            Mining_Small_Camera.SetActive(true);
+            NewItemsGained_Popup_Camera.SetActive(true);
+            ItemsGained_Camera.SetActive(false);
+        }else{
+            Mining_Big_Camera.SetActive(false);
+            Mining_Small_Camera.SetActive(false);
+            NewItemsGained_Popup_Camera.SetActive(false);
+            ItemsGained_Camera.SetActive(true);
+          
+        }
+        if(List_Menus_Breakdown_Text[0].GetComponent<UnityEngine.UI.Text>().text == "Play Game"){
+          if(List_Menus_Breakdown_Text[1].GetComponent<UnityEngine.UI.Text>().text == "Mine"){
+              if(List_Menus_Breakdown_Text[2].GetComponent<UnityEngine.UI.Text>().text == "Coal Vain"){
+                
+              }else{
+                Mining_Big_Camera.SetActive(false);
+                Mining_Small_Camera.SetActive(false);
+              } 
+          }
+          if(List_Menus_Breakdown_Text[1].GetComponent<UnityEngine.UI.Text>().text == "Forge"){
+            
+          }
+          if(List_Menus_Breakdown_Text[1].GetComponent<UnityEngine.UI.Text>().text == "Forge"){
+            
+          }
+          if(List_Menus_Breakdown_Text[1].GetComponent<UnityEngine.UI.Text>().text == "Forge"){
+            
+          }
+          if(List_Menus_Breakdown_Text[1].GetComponent<UnityEngine.UI.Text>().text == "Forge"){
+            
+          }
+        }else{
+          
+        }
 			CastRay();
 	    		
 	    	 if (Input.GetMouseButtonDown(0)){
@@ -2004,7 +2047,7 @@ public string currentSetMain = "Dirt";
 	        	
 	    }
       void Set_Buttons(){
-        string Currently_Selcted = List_Result_1_Text_Gameobject[0].GetComponent<UnityEngine.UI.Text>().text;        
+        Currently_Selected = List_Result_1_Text_Gameobject[0].GetComponent<UnityEngine.UI.Text>().text;        
         int ThisButton_Menu_1 = 0;
         int ThisButton_Menu_2 = 0;
       List_Menus_Breakdown[0].GetComponent<SpriteRenderer>().sprite = Resources.Load("Buttons/"+Selected_Menu_Title_Background[0+1], typeof(Sprite)) as Sprite;            
@@ -2051,7 +2094,7 @@ public string currentSetMain = "Dirt";
           
       }
       for(var whichTitle = 0; whichTitle < Selected_Menu_Title_Background.Count; whichTitle++){
-          if(Selected_Menu_Title_Background[whichTitle] == Currently_Selcted){
+          if(Selected_Menu_Title_Background[whichTitle] == Currently_Selected){
               ThisButton_Menu_2 = whichTitle;
           }
       }  
@@ -2186,25 +2229,7 @@ public string currentSetMain = "Dirt";
 	    }
 	    void CastRay()
 	    {
-	    	if(List_Menus_Breakdown_Text[0].GetComponent<UnityEngine.UI.Text>().text == "Play Game"){
-	    		if(List_Menus_Breakdown_Text[1].GetComponent<UnityEngine.UI.Text>().text == "Mine"){
-	    			if(List_Menus_Breakdown_Text[2].GetComponent<UnityEngine.UI.Text>().text == "Area 1"){
-	    				
-	    			}	
-	    		}
-	    		if(List_Menus_Breakdown_Text[1].GetComponent<UnityEngine.UI.Text>().text == "Forge"){
-	    			
-	    		}
-	    		if(List_Menus_Breakdown_Text[1].GetComponent<UnityEngine.UI.Text>().text == "Forge"){
-	    			
-	    		}
-	    		if(List_Menus_Breakdown_Text[1].GetComponent<UnityEngine.UI.Text>().text == "Forge"){
-	    			
-	    		}
-	    		if(List_Menus_Breakdown_Text[1].GetComponent<UnityEngine.UI.Text>().text == "Forge"){
-	    			
-	    		}
-	    	}
+	    	
 	        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 	        RaycastHit2D hit = Physics2D.Raycast (ray.origin, ray.direction, Mathf.Infinity);
 	        if (hit)
