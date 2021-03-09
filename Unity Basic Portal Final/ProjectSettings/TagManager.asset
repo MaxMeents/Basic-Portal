@@ -9,6 +9,7 @@ TagManager:
   - MiningCamera
   - ItemsGainedCamrea
   - New Items Gained Popup Camera
+  - Fighting Camera
   layers:
   - Default
   - TransparentFX
