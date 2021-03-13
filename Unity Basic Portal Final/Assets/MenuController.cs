@@ -10,16 +10,133 @@ using System.IO;
 
 	public class MenuController : MonoBehaviour
 	{
+    GameObject SmallCameraCanvas = null;
+    int Size_Of_Mine = 0;
+    string ActiveMine = "None";
+    public List<string> List_Mine_1B_1Star_Names = new List<string>();
+    public List<string> List_Mine_4B_1Star_Names = new List<string>();
+    bool Changed_Mines = true;
+    public Texture CameraSize1;
+    public Texture CameraSize4;
+    public Texture CameraSize16;
+    public Texture CameraSize64;
+    public Texture CameraSize256;
+    public List<double> List_Mine_1B_1Star_1_BlockHealth = new List<double>();
+    public List<double> List_Mine_4B_1Star_1_BlockHealth = new List<double>();
+    public List<double> List_Mine_16B_1Star_1_BlockHealth = new List<double>();
+    public List<double> List_Mine_64B_1Star_1_BlockHealth = new List<double>();
+    public List<double> List_Mine_256B_1Star_1_BlockHealth = new List<double>();
+    public List<string> List_Mine_1B_1Star_1_Tile = new List<string>();
+    public List<string> List_Mine_4B_1Star_1_Tile = new List<string>();
+    public List<string> List_Mine_16B_1Star_1_Tile = new List<string>();
+    public List<string> List_Mine_64B_1Star_1_Tile = new List<string>();
+    public List<string> List_Mine_256B_1Star_1_Tile = new List<string>();
+    public List<string> List_Mine_1B_1Star_1_Mineral = new List<string>();
+    public List<string> List_Mine_4B_1Star_1_Mineral = new List<string>();
+    public List<string> List_Mine_16B_1Star_1_Mineral = new List<string>();
+    public List<string> List_Mine_64B_1Star_1_Mineral = new List<string>();
+    public List<string> List_Mine_256B_1Star_1_Mineral = new List<string>();
+    public List<string> List_Mine_1B_1Star_1_Item = new List<string>();
+    public List<string> List_Mine_4B_1Star_1_Item = new List<string>();
+    public List<string> List_Mine_16B_1Star_1_Item = new List<string>();
+    public List<string> List_Mine_64B_1Star_1_Item = new List<string>();
+    public List<string> List_Mine_256B_1Star_1_Item = new List<string>();
+public List<double> List_Mine_1B_1Star_2_BlockHealth = new List<double>();
+    public List<double> List_Mine_4B_1Star_2_BlockHealth = new List<double>();
+    public List<double> List_Mine_16B_1Star_2_BlockHealth = new List<double>();
+    public List<double> List_Mine_64B_1Star_2_BlockHealth = new List<double>();
+    public List<double> List_Mine_256B_1Star_2_BlockHealth = new List<double>();
+    public List<string> List_Mine_1B_1Star_2_Tile = new List<string>();
+    public List<string> List_Mine_4B_1Star_2_Tile = new List<string>();
+    public List<string> List_Mine_16B_1Star_2_Tile = new List<string>();
+    public List<string> List_Mine_64B_1Star_2_Tile = new List<string>();
+    public List<string> List_Mine_256B_1Star_2_Tile = new List<string>();
+    public List<string> List_Mine_1B_1Star_2_Mineral = new List<string>();
+    public List<string> List_Mine_4B_1Star_2_Mineral = new List<string>();
+    public List<string> List_Mine_16B_1Star_2_Mineral = new List<string>();
+    public List<string> List_Mine_64B_1Star_2_Mineral = new List<string>();
+    public List<string> List_Mine_256B_1Star_2_Mineral = new List<string>();
+    public List<string> List_Mine_1B_1Star_2_Item = new List<string>();
+    public List<string> List_Mine_4B_1Star_2_Item = new List<string>();
+    public List<string> List_Mine_16B_1Star_2_Item = new List<string>();
+    public List<string> List_Mine_64B_1Star_2_Item = new List<string>();
+    public List<string> List_Mine_256B_1Star_2_Item = new List<string>();
+public List<double> List_Mine_1B_1Star_3_BlockHealth = new List<double>();
+    public List<double> List_Mine_4B_1Star_3_BlockHealth = new List<double>();
+    public List<double> List_Mine_16B_1Star_3_BlockHealth = new List<double>();
+    public List<double> List_Mine_64B_1Star_3_BlockHealth = new List<double>();
+    public List<double> List_Mine_256B_1Star_3_BlockHealth = new List<double>();
+    public List<string> List_Mine_1B_1Star_3_Tile = new List<string>();
+    public List<string> List_Mine_4B_1Star_3_Tile = new List<string>();
+    public List<string> List_Mine_16B_1Star_3_Tile = new List<string>();
+    public List<string> List_Mine_64B_1Star_3_Tile = new List<string>();
+    public List<string> List_Mine_256B_1Star_3_Tile = new List<string>();
+    public List<string> List_Mine_1B_1Star_3_Mineral = new List<string>();
+    public List<string> List_Mine_4B_1Star_3_Mineral = new List<string>();
+    public List<string> List_Mine_16B_1Star_3_Mineral = new List<string>();
+    public List<string> List_Mine_64B_1Star_3_Mineral = new List<string>();
+    public List<string> List_Mine_256B_1Star_3_Mineral = new List<string>();
+    public List<string> List_Mine_1B_1Star_3_Item = new List<string>();
+    public List<string> List_Mine_4B_1Star_3_Item = new List<string>();
+    public List<string> List_Mine_16B_1Star_3_Item = new List<string>();
+    public List<string> List_Mine_64B_1Star_3_Item = new List<string>();
+    public List<string> List_Mine_256B_1Star_3_Item = new List<string>();
+public List<double> List_Mine_1B_1Star_4_BlockHealth = new List<double>();
+    public List<double> List_Mine_4B_1Star_4_BlockHealth = new List<double>();
+    public List<double> List_Mine_16B_1Star_4_BlockHealth = new List<double>();
+    public List<double> List_Mine_64B_1Star_4_BlockHealth = new List<double>();
+    public List<double> List_Mine_256B_1Star_4_BlockHealth = new List<double>();
+    public List<string> List_Mine_1B_1Star_4_Tile = new List<string>();
+    public List<string> List_Mine_4B_1Star_4_Tile = new List<string>();
+    public List<string> List_Mine_16B_1Star_4_Tile = new List<string>();
+    public List<string> List_Mine_64B_1Star_4_Tile = new List<string>();
+    public List<string> List_Mine_256B_1Star_4_Tile = new List<string>();
+    public List<string> List_Mine_1B_1Star_4_Mineral = new List<string>();
+    public List<string> List_Mine_4B_1Star_4_Mineral = new List<string>();
+    public List<string> List_Mine_16B_1Star_4_Mineral = new List<string>();
+    public List<string> List_Mine_64B_1Star_4_Mineral = new List<string>();
+    public List<string> List_Mine_256B_1Star_4_Mineral = new List<string>();
+    public List<string> List_Mine_1B_1Star_4_Item = new List<string>();
+    public List<string> List_Mine_4B_1Star_4_Item = new List<string>();
+    public List<string> List_Mine_16B_1Star_4_Item = new List<string>();
+    public List<string> List_Mine_64B_1Star_4_Item = new List<string>();
+    public List<string> List_Mine_256B_1Star_4_Item = new List<string>();
+public List<double> List_Mine_1B_1Star_5_BlockHealth = new List<double>();
+    public List<double> List_Mine_4B_1Star_5_BlockHealth = new List<double>();
+    public List<double> List_Mine_16B_1Star_5_BlockHealth = new List<double>();
+    public List<double> List_Mine_64B_1Star_5_BlockHealth = new List<double>();
+    public List<double> List_Mine_256B_1Star_5_BlockHealth = new List<double>();
+    public List<string> List_Mine_1B_1Star_5_Tile = new List<string>();
+    public List<string> List_Mine_4B_1Star_5_Tile = new List<string>();
+    public List<string> List_Mine_16B_1Star_5_Tile = new List<string>();
+    public List<string> List_Mine_64B_1Star_5_Tile = new List<string>();
+    public List<string> List_Mine_256B_1Star_5_Tile = new List<string>();
+    public List<string> List_Mine_1B_1Star_5_Mineral = new List<string>();
+    public List<string> List_Mine_4B_1Star_5_Mineral = new List<string>();
+    public List<string> List_Mine_16B_1Star_5_Mineral = new List<string>();
+    public List<string> List_Mine_64B_1Star_5_Mineral = new List<string>();
+    public List<string> List_Mine_256B_1Star_5_Mineral = new List<string>();
+    public List<string> List_Mine_1B_1Star_5_Item = new List<string>();
+    public List<string> List_Mine_4B_1Star_5_Item = new List<string>();
+    public List<string> List_Mine_16B_1Star_5_Item = new List<string>();
+    public List<string> List_Mine_64B_1Star_5_Item = new List<string>();
+    public List<string> List_Mine_256B_1Star_5_Item = new List<string>();
+
+
+    
+
 
     public GameObject Lightning_Skill = null;
     public bool Lightning_Button = false;
     public bool LightningActiveTrueOrFalse = false;
     public GameObject Enemy = null;
     public int Stage_Enemy_Num = 1;
+    
     public List<string> List_Enemy_Rank = new List<string>();
+
     public List<string> List_Map_Rank = new List<string>();
     public List<float> LayerHealth = new List<float>();
-    public float LayerHeathFull = 100f;
+    float LayerHeathFull = 1f;
 
     public List<string> List_Enemys_Name = new List<string>();
     public List<string> List_Enemys_Image = new List<string>();
@@ -144,10 +261,16 @@ using System.IO;
 		
 		
 		
-		public List<string> List_Written_Out_Coal_Vain = new List<string>();
-		public List<string> List_Written_Out_Coal_Vain_Images = new List<string>();
-		public List<string> List_Written_Out_Coal_Vain_Images_Texture = new List<string>();
-		public List<string> List_Written_Out_Coal_Vain_Info = new List<string>();
+		public List<string> List_Written_Out_1_1_1_1 = new List<string>();
+		public List<string> List_Written_Out_1_1_1_1_Images = new List<string>();
+		public List<string> List_Written_Out_1_1_1_1_Images_Texture = new List<string>();
+		public List<string> List_Written_Out_1_1_1_1_Info = new List<string>();
+
+
+    public List<string> List_Written_Out_1_1_1_2 = new List<string>();
+    public List<string> List_Written_Out_1_1_1_2_Images = new List<string>();
+    public List<string> List_Written_Out_1_1_1_2_Images_Texture = new List<string>();
+    public List<string> List_Written_Out_1_1_1_2_Info = new List<string>();
 		
 
 		public List<string> List_Menu_Blank_Strings = new List<string>();
@@ -336,9 +459,51 @@ using System.IO;
   public static double Snow_Crystal_Amount = 0;
 //Need to replace
   public static double R_Nothing = 0;
+  public static double R_Coal_One = 0;
   public static double R_Coal_Few = 0;
   public static double R_Coal_Some = 0;
   public static double R_Coal_Lots = 0;
+  public static double R_Coal_Tons = 0;
+  public static double R_Sapphire_One = 0;
+  public static double R_Sapphire_Few = 0;
+  public static double R_Sapphire_Some = 0;
+  public static double R_Sapphire_Lots = 0;
+  public static double R_Sapphire_Tons = 0;
+  public static double R_Ruby_One = 0;
+  public static double R_Ruby_Few = 0;
+  public static double R_Ruby_Some = 0;
+  public static double R_Ruby_Lots = 0;
+  public static double R_Ruby_Tons = 0;
+  public static double R_Carnelian_One = 0;
+  public static double R_Carnelian_Few = 0;
+  public static double R_Carnelian_Some = 0;
+  public static double R_Carnelian_Lots = 0;
+  public static double R_Carnelian_Tons = 0;
+  public static double R_Jade_One = 0;
+  public static double R_Jade_Few = 0;
+  public static double R_Jade_Some = 0;
+  public static double R_Jade_Lots = 0;
+  public static double R_Jade_Tons = 0;
+  public static double R_Emerald_One = 0;
+  public static double R_Emerald_Few = 0;
+  public static double R_Emerald_Some = 0;
+  public static double R_Emerald_Lots = 0;
+  public static double R_Emerald_Tons = 0;
+  public static double R_Amethyst_One = 0;
+  public static double R_Amethyst_Few = 0;
+  public static double R_Amethyst_Some = 0;
+  public static double R_Amethyst_Lots = 0;
+  public static double R_Amethyst_Tons = 0;
+  public static double R_Tanzanite_One = 0;
+  public static double R_Tanzanite_Few = 0;
+  public static double R_Tanzanite_Some = 0;
+  public static double R_Tanzanite_Lots = 0;
+  public static double R_Tanzanite_Tons = 0;
+  public static double R_Sunstone_One = 0;
+  public static double R_Sunstone_Few = 0;
+  public static double R_Sunstone_Some = 0;
+  public static double R_Sunstone_Lots = 0;
+  public static double R_Sunstone_Tons = 0;
 
   public static double R_Dirt = 0;
   public static double R_Rich_Soil = 0;
@@ -461,17 +626,28 @@ using System.IO;
   public Sprite Compressed_Ice;
 public string Block_Name = "";
 public string Mineral_Name = "";
-  public string Stage_Name = "Dirt";
-public string currentSetMain = "Dirt";
+  string Stage_Name = "Stone";
+string currentSetMain = "Stone";
   public double SetMain = 0;
   public double SetMainMineral = 0;
-  System.Random RandomMap = new System.Random();
 	    // Start is called before the first frame update
 	    void Start()
 	    {
+        SmallCameraCanvas = GameObject.Find("Small Camera Canvas");        
+        List_Mine_1B_1Star_Names.Add("Completely Worthless");
+        List_Mine_1B_1Star_Names.Add("Almost Completely Worthless");
+        List_Mine_1B_1Star_Names.Add("Dry Lifeless Dirt and Coal");
+        List_Mine_1B_1Star_Names.Add("Dirt, Stone and Coal ! !");
+        List_Mine_1B_1Star_Names.Add("A little Gold, Lots of Rich Soil");
+
+        List_Mine_4B_1Star_Names.Add("4❒ Completely Worthless");
+        List_Mine_4B_1Star_Names.Add("4❒ Almost Completely Worthless");
+        List_Mine_4B_1Star_Names.Add("4❒ Dry Lifeless Dirt and Coal");
+        List_Mine_4B_1Star_Names.Add("4❒ Dirt, Stone and Coal ! !");
+        List_Mine_4B_1Star_Names.Add("4❒ A little Gold, Lots of Rich Soil");
+
         UnityEngine.Random.seed = 420; 
-        
-        
+
         //Lightning_Skill = GameObject.Find("Lightning Skill");
         Enemy = GameObject.Find("Enemy");      
         Maps_Enemys_Stage_Num.Add(Map_Majestic_Volcano_Stage_Num);
@@ -2718,11 +2894,19 @@ public string currentSetMain = "Dirt";
 			Selected_Menu_Title_Background.Add("3-DRh");
       Selected_Menu_Title_Background.Add("3-E");
 
-			List_Written_Out_Coal_Vain_Info.Add("Mine");
-			List_Written_Out_Coal_Vain_Info.Add("Coal Vain");
-			Selected_Menu_Title_Background.Add("Coal Vain");
-      Selected_Menu_Title_Background.Add("3-DRh");
-      Selected_Menu_Title_Background.Add("3-E");
+			List_Written_Out_1_1_1_1_Info.Add("Mine");
+			List_Written_Out_1_1_1_1_Info.Add("1 ☆");
+			Selected_Menu_Title_Background.Add("1 ☆");
+      Selected_Menu_Title_Background.Add("3-Yh");
+      Selected_Menu_Title_Background.Add("3-GAh");
+
+      List_Written_Out_1_1_1_2_Info.Add("Mine");
+      List_Written_Out_1_1_1_2_Info.Add("4 ☆");
+      Selected_Menu_Title_Background.Add("4 ☆");
+      Selected_Menu_Title_Background.Add("3-GAh");
+      Selected_Menu_Title_Background.Add("3-Yh");
+
+
 			
 			//New List Area AHK
     List_Written_Out_Areas_Name.Add("Majestic Volcano");
@@ -2856,42 +3040,119 @@ public string currentSetMain = "Dirt";
 			
 			
 
-			List_Written_Out_Coal_Vain.Add("Coal Vain : On");
-			List_Written_Out_Coal_Vain_Images.Add("");
-			List_Written_Out_Coal_Vain_Images_Texture.Add("Mining Close Up");
-			List_Written_Out_Coal_Vain.Add("Coal Vain : Off");
-			List_Written_Out_Coal_Vain_Images.Add("");
-			List_Written_Out_Coal_Vain_Images_Texture.Add("Transparent");
-			List_Written_Out_Coal_Vain.Add(" ");
-			List_Written_Out_Coal_Vain_Images.Add("");
-			List_Written_Out_Coal_Vain_Images_Texture.Add("Transparent");
-			List_Written_Out_Coal_Vain.Add(" ");
-			List_Written_Out_Coal_Vain_Images.Add("");
-			List_Written_Out_Coal_Vain_Images_Texture.Add("Transparent");
-			List_Written_Out_Coal_Vain.Add(" ");
-			List_Written_Out_Coal_Vain_Images.Add("");
-			List_Written_Out_Coal_Vain_Images_Texture.Add("Transparent");
-			List_Written_Out_Coal_Vain.Add(" ");
-			List_Written_Out_Coal_Vain_Images.Add("");
-			List_Written_Out_Coal_Vain_Images_Texture.Add("Transparent");
-			List_Written_Out_1_1_1.Add("Coal Vain");
-			List_Written_Out_1_1_1_Images.Add("");
-			List_Written_Out_1_1_1_Images_Texture.Add("Mining Close Up");
-			List_Written_Out_1_1_1.Add("Area 2");
+			List_Written_Out_1_1_1_1.Add(List_Mine_1B_1Star_Names[0]);
+			List_Written_Out_1_1_1_1_Images.Add("");
+			List_Written_Out_1_1_1_1_Images_Texture.Add("Transparent");
+			List_Written_Out_1_1_1_1.Add(List_Mine_1B_1Star_Names[1]);
+			List_Written_Out_1_1_1_1_Images.Add("");
+			List_Written_Out_1_1_1_1_Images_Texture.Add("Transparent");
+			List_Written_Out_1_1_1_1.Add(List_Mine_1B_1Star_Names[2]);
+			List_Written_Out_1_1_1_1_Images.Add("");
+			List_Written_Out_1_1_1_1_Images_Texture.Add("Transparent");
+			List_Written_Out_1_1_1_1.Add(List_Mine_1B_1Star_Names[3]);
+			List_Written_Out_1_1_1_1_Images.Add("");
+			List_Written_Out_1_1_1_1_Images_Texture.Add("Transparent");
+			List_Written_Out_1_1_1_1.Add(List_Mine_1B_1Star_Names[4]);
+			List_Written_Out_1_1_1_1_Images.Add("");
+			List_Written_Out_1_1_1_1_Images_Texture.Add("Transparent");
+			List_Written_Out_1_1_1_1.Add(" ");
+			List_Written_Out_1_1_1_1_Images.Add("");
+			List_Written_Out_1_1_1_1_Images_Texture.Add("Transparent");
+
+      List_Written_Out_1_1_1_2.Add(List_Mine_4B_1Star_Names[0]);
+      List_Written_Out_1_1_1_2_Images.Add("");
+      List_Written_Out_1_1_1_2_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1_2.Add(List_Mine_4B_1Star_Names[1]);
+      List_Written_Out_1_1_1_2_Images.Add("");
+      List_Written_Out_1_1_1_2_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1_2.Add(List_Mine_4B_1Star_Names[2]);
+      List_Written_Out_1_1_1_2_Images.Add("");
+      List_Written_Out_1_1_1_2_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1_2.Add(List_Mine_4B_1Star_Names[3]);
+      List_Written_Out_1_1_1_2_Images.Add("");
+      List_Written_Out_1_1_1_2_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1_2.Add(List_Mine_4B_1Star_Names[4]);
+      List_Written_Out_1_1_1_2_Images.Add("");
+      List_Written_Out_1_1_1_2_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1_2.Add(" ");
+      List_Written_Out_1_1_1_2_Images.Add("");
+      List_Written_Out_1_1_1_2_Images_Texture.Add("Transparent");
+
+			List_Written_Out_1_1_1.Add("1 ☆");
 			List_Written_Out_1_1_1_Images.Add("");
 			List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
-			List_Written_Out_1_1_1.Add("Area 3");
+			List_Written_Out_1_1_1.Add("1 ☆☆");
 			List_Written_Out_1_1_1_Images.Add("");
 			List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
-			List_Written_Out_1_1_1.Add(" ");
+			List_Written_Out_1_1_1.Add("1 ☆☆☆");
 			List_Written_Out_1_1_1_Images.Add("");
 			List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
-			List_Written_Out_1_1_1.Add(" ");
+			List_Written_Out_1_1_1.Add("1 ☆☆☆☆");
 			List_Written_Out_1_1_1_Images.Add("");
 			List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
-			List_Written_Out_1_1_1.Add(" ");
+			List_Written_Out_1_1_1.Add("1 ☆☆☆☆☆");
 			List_Written_Out_1_1_1_Images.Add("");
 			List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+			List_Written_Out_1_1_1.Add("4 ☆");
+			List_Written_Out_1_1_1_Images.Add("");
+			List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("4 ☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("4 ☆☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("4 ☆☆☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("4 ☆☆☆☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("16 ☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("16 ☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("16 ☆☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("16 ☆☆☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("16 ☆☆☆☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("64 ☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("64 ☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("64 ☆☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("64 ☆☆☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("64 ☆☆☆☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("256 ☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("256 ☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("256 ☆☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("256 ☆☆☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
+      List_Written_Out_1_1_1.Add("256 ☆☆☆☆☆");
+      List_Written_Out_1_1_1_Images.Add("");
+      List_Written_Out_1_1_1_Images_Texture.Add("Transparent");
 
 			List_Written_Out_1_1.Add("Mine");
 			List_Written_Out_1_1_Images.Add("Mining/darkstone");
@@ -3020,11 +3281,16 @@ public string currentSetMain = "Dirt";
 			
 			
 			
-	    	Lists_Written_Out.Add(List_Written_Out_Coal_Vain);
-			Lists_Written_Out_Images.Add(List_Written_Out_Coal_Vain_Images);
-			Lists_Written_Out_Images_Texture.Add(List_Written_Out_Coal_Vain_Images_Texture);
-			Lists_Written_Out_Info.Add(List_Written_Out_Coal_Vain_Info);
-	    	
+	    	Lists_Written_Out.Add(List_Written_Out_1_1_1_1);
+			Lists_Written_Out_Images.Add(List_Written_Out_1_1_1_1_Images);
+			Lists_Written_Out_Images_Texture.Add(List_Written_Out_1_1_1_1_Images_Texture);
+			Lists_Written_Out_Info.Add(List_Written_Out_1_1_1_1_Info);
+
+	     Lists_Written_Out.Add(List_Written_Out_1_1_1_2);
+      Lists_Written_Out_Images.Add(List_Written_Out_1_1_1_2_Images);
+      Lists_Written_Out_Images_Texture.Add(List_Written_Out_1_1_1_2_Images_Texture);
+      Lists_Written_Out_Info.Add(List_Written_Out_1_1_1_2_Info);
+      	
 
 	    	Lists_Written_Out_Saved = Lists_Written_Out;
 	    	Lists_Written_Out_Images_Saved = Lists_Written_Out_Images;
@@ -3152,17 +3418,25 @@ public string currentSetMain = "Dirt";
           NewItemsGainedArea_List_Item.Add(GameObject.Find("New Items Gained Area/New Item ("+i+")"));
         }
 			Get_Mining_Area_1_Variables();
-			 Mining_Area_1_Generate_All_Blocks();
+      AllBlockPlaceHolderGenerator();
+      Generate_Blocks();
+      
+      InvokeRepeating("Generate_Blocks", 0f, 0.01f);
+      InvokeRepeating("Changed_Mines_Function", 0f, 1f);
+      InvokeRepeating("Mine_Blocks", 0f, 0.001f);
+			 //Mining_Area_1_Generate_All_Blocks();
 	    	Mining_Area_1_Camera = GameObject.Find("MiningCamera");
 	    	//Mining_Area_1_Function();
-	    	InvokeRepeating("Mining_Area_1_Mine_Blocks", 0f,0.001f);
-        InvokeRepeating("NewItem_Function", 0f, .001f);
-        InvokeRepeating("NewItemsGainedArea", 0f, .001f);
+	    	//InvokeRepeating("Mining_Area_1_Mine_Blocks", 0f,0.001f);
+        //InvokeRepeating("NewItem_Function", 0f, .001f);
+        //InvokeRepeating("NewItemsGainedArea", 0f, .001f);
         InvokeRepeating("Fight", 0f, .01f);
 	    	//ConvertLists();
 
 	    }
-
+      void Changed_Mines_Function(){
+        Changed_Mines = true;
+      }
       void NewItemsGainedArea(){
         /*we want to change item 1 to last item in list*/
         
@@ -3313,9 +3587,442 @@ public string currentSetMain = "Dirt";
 				    	}
 				    }	
 				}
-			
+        GameObject AutomatonParent = GameObject.Find("Mining Canvas Mining Camera");
+  			for(var i3 = 0;i3 < Lists_Mining_Area_1_Layers[0].Count; i3++){
+            Mining_Area_1_Automatons.Add(Instantiate(Resources.Load("Characters/DragonBones Characters/AncientAutomaton") as GameObject));
+            Mining_Area_1_Automatons[i3].transform.parent = AutomatonParent.transform;                                                  
+            Mining_Area_1_Automatons[i3].transform.position = Lists_Mining_Area_1_Layers[0][i3].transform.position;    
+            Mining_Area_1_Automatons[i3].transform.localPosition += new Vector3(40f,50f,0);
+            Mining_Area_1_Automatons[i3].transform.localScale = new Vector3(26f,45f,26f);
+            Mining_Area_1_Automatons[i3].name = "Automaton "+ i3;
+            Mining_Area_1_Automatons[i3].SetActive(false);
+            Mining_Area_1_AutomatonsHit.Add(Instantiate(Resources.Load("Characters/DragonBones Characters/AutomatonHit") as GameObject));
+            Mining_Area_1_AutomatonsHit[i3].transform.parent = AutomatonParent.transform;                                                  
+            Mining_Area_1_AutomatonsHit[i3].transform.position = Lists_Mining_Area_1_Layers[0][i3].transform.position;    
+            Mining_Area_1_AutomatonsHit[i3].transform.localPosition += new Vector3(0f,30f,0);
+            Mining_Area_1_AutomatonsHit[i3].transform.localScale = new Vector3(150f,150f,150f);
+            Mining_Area_1_AutomatonsHit[i3].name = "AutomatonHit "+ i3;
+            Mining_Area_1_AutomatonsHit[i3].SetActive(false);
+            LayerHealth.Add(LayerHeathFull);
+        }
 
 	    }
+      //1,4,16,64,256
+      //Different Areas
+      //Each Set has its own life
+      //Each Set has its own automatons
+      //Each Number has its own cameras
+      //Passing Time needs to advance all areas with working automatons
+      //Items need to be added from each working set
+      //Each set needs to be added to Menu Options
+      //Each Set needs layer Number
+      //if health of block = 0 add item to inventory
+      //if health of all top layer = 0 increase layer num
+      //when generating blocks use layer num 
+      //generate next set if layer num increases
+      //Hide, Show correct Number of blocks 1,4,16..
+      void AllBlockPlaceHolderGenerator(){
+        //SetBlockValue();//Change this depending on the mine
+
+        setVarsT0();
+        setVarsT0Mineral();
+        SetBlockValueMineral_1Star_1();
+        SetBlockValue_1Star_1();
+        Set_Main();
+        Calculate_Next();
+        //SetBlockValueMineral();//Change this depending on the mine
+        Set_Main_Mineral();
+        Calculate_Next_Mineral();
+        for(var i = 0; i <= 5;i++){
+
+          GenerateNextBlock();
+          GenerateNextMineral();
+          //GenerateNextItem();
+          List_Mine_1B_1Star_1_BlockHealth.Add(100);
+          List_Mine_1B_1Star_1_Tile.Add(""+Block_Name);
+          List_Mine_1B_1Star_1_Mineral.Add(""+Mineral_Name);
+          List_Mine_1B_1Star_1_Item.Add("Nothing");
+        }
+        setVarsT0();
+        setVarsT0Mineral();
+        SetBlockValueMineral_1Star_2();
+        SetBlockValue_1Star_2();
+        Set_Main();
+        Calculate_Next();
+        //SetBlockValueMineral();//Change this depending on the mine
+        Set_Main_Mineral();
+        Calculate_Next_Mineral();
+         for(var i = 0; i <= 5;i++){
+          GenerateNextBlock();
+          GenerateNextMineral();
+          //GenerateNextItem();
+          List_Mine_1B_1Star_2_BlockHealth.Add(500);
+          List_Mine_1B_1Star_2_Tile.Add(""+Block_Name);
+          List_Mine_1B_1Star_2_Mineral.Add(""+Mineral_Name);
+          List_Mine_1B_1Star_2_Item.Add("Nothing");
+        }
+        setVarsT0();
+        setVarsT0Mineral();
+        SetBlockValueMineral_1Star_3();
+        SetBlockValue_1Star_3();
+        Set_Main();
+        Calculate_Next();
+        //SetBlockValueMineral();//Change this depending on the mine
+        Set_Main_Mineral();
+        Calculate_Next_Mineral();
+         for(var i = 0; i <= 5;i++){
+          GenerateNextBlock();
+          GenerateNextMineral();
+          //GenerateNextItem();
+          List_Mine_1B_1Star_3_BlockHealth.Add(500);
+          List_Mine_1B_1Star_3_Tile.Add(""+Block_Name);
+          List_Mine_1B_1Star_3_Mineral.Add(""+Mineral_Name);
+          List_Mine_1B_1Star_3_Item.Add("Nothing");
+        }
+        setVarsT0();
+        setVarsT0Mineral();
+        SetBlockValueMineral_1Star_4();
+        SetBlockValue_1Star_4();
+        Set_Main();
+        Calculate_Next();
+        //SetBlockValueMineral();//Change this depending on the mine
+        Set_Main_Mineral();
+        Calculate_Next_Mineral();
+        for(var i = 0; i <= 5;i++){
+          GenerateNextBlock();
+          GenerateNextMineral();
+          //GenerateNextItem();
+          List_Mine_1B_1Star_4_BlockHealth.Add(500);
+          List_Mine_1B_1Star_4_Tile.Add(""+Block_Name);
+          List_Mine_1B_1Star_4_Mineral.Add(""+Mineral_Name);
+          List_Mine_1B_1Star_4_Item.Add("Nothing");
+        }
+        setVarsT0();
+        setVarsT0Mineral();
+        SetBlockValueMineral_1Star_5();
+        SetBlockValue_1Star_5();
+        Set_Main();
+        Calculate_Next();
+        //SetBlockValueMineral();//Change this depending on the mine
+        Set_Main_Mineral();
+        Calculate_Next_Mineral();
+        for(var i = 0; i <= 5;i++){
+          GenerateNextBlock();
+          GenerateNextMineral();
+          //GenerateNextItem();
+          List_Mine_1B_1Star_5_BlockHealth.Add(500);
+          List_Mine_1B_1Star_5_Tile.Add(""+Block_Name);
+          List_Mine_1B_1Star_5_Mineral.Add(""+Mineral_Name);
+          List_Mine_1B_1Star_5_Item.Add("Nothing");
+        }
+        setVarsT0();
+        setVarsT0Mineral();
+        SetBlockValueMineral_1Star_1();
+        SetBlockValue_1Star_1();
+        Set_Main();
+        Calculate_Next();
+        //SetBlockValueMineral();//Change this depending on the mine
+        Set_Main_Mineral();
+        Calculate_Next_Mineral();
+        for(var i = 1; i <= 24;i++){
+
+          GenerateNextBlock();
+          GenerateNextMineral();
+          //GenerateNextItem();
+          List_Mine_4B_1Star_1_BlockHealth.Add(100);
+          List_Mine_4B_1Star_1_Tile.Add(""+Block_Name);
+          List_Mine_4B_1Star_1_Mineral.Add(""+Mineral_Name);
+          List_Mine_4B_1Star_1_Item.Add("Nothing");
+        }
+        setVarsT0();
+        setVarsT0Mineral();
+        SetBlockValueMineral_1Star_2();
+        SetBlockValue_1Star_2();
+        Set_Main();
+        Calculate_Next();
+        //SetBlockValueMineral();//Change this depending on the mine
+        Set_Main_Mineral();
+        Calculate_Next_Mineral();
+        for(var i = 1; i <= 24;i++){
+
+          GenerateNextBlock();
+          GenerateNextMineral();
+          //GenerateNextItem();
+          List_Mine_4B_1Star_2_BlockHealth.Add(100);
+          List_Mine_4B_1Star_2_Tile.Add(""+Block_Name);
+          List_Mine_4B_1Star_2_Mineral.Add(""+Mineral_Name);
+          List_Mine_4B_1Star_2_Item.Add("Nothing");
+        }
+      }
+      void _1B_1Star_1_Next(){
+      //SetBlockValue();//Change this depending on the mine
+        setVarsT0();
+        setVarsT0Mineral();
+        SetBlockValueMineral_1Star_1();
+        SetBlockValue_1Star_1();
+        Set_Main();
+        Calculate_Next();
+        //SetBlockValueMineral();//Change this depending on the mine
+        Set_Main_Mineral();
+        Calculate_Next_Mineral();
+        GenerateNextBlock();
+          GenerateNextMineral();
+        List_Mine_1B_1Star_1_BlockHealth.Add(100);
+        List_Mine_1B_1Star_1_Tile.Add(""+Block_Name);
+        List_Mine_1B_1Star_1_Mineral.Add(""+Mineral_Name);
+        List_Mine_1B_1Star_1_Item.Add("Nothing");
+        
+      }
+      void _1B_1Star_2_Next(){
+      //SetBlockValue();//Change this depending on the mine
+        setVarsT0();
+        setVarsT0Mineral();
+        SetBlockValueMineral_1Star_2();
+        SetBlockValue_1Star_2();
+        Set_Main();
+        Calculate_Next();
+        //SetBlockValueMineral();//Change this depending on the mine
+        Set_Main_Mineral();
+        Calculate_Next_Mineral();
+        GenerateNextBlock();
+          GenerateNextMineral();
+        List_Mine_1B_1Star_2_BlockHealth.Add(500);
+        List_Mine_1B_1Star_2_Tile.Add(""+Block_Name);
+        List_Mine_1B_1Star_2_Mineral.Add(""+Mineral_Name);
+        List_Mine_1B_1Star_2_Item.Add("Nothing");
+        
+      }
+      void _1B_1Star_3_Next(){
+      //SetBlockValue();//Change this depending on the mine
+        setVarsT0();
+        setVarsT0Mineral();
+        SetBlockValueMineral_1Star_3();
+        SetBlockValue_1Star_3();
+        Set_Main();
+        Calculate_Next();
+        //SetBlockValueMineral();//Change this depending on the mine
+        Set_Main_Mineral();
+        Calculate_Next_Mineral();
+        GenerateNextBlock();
+          GenerateNextMineral();
+        List_Mine_1B_1Star_3_BlockHealth.Add(800);
+        List_Mine_1B_1Star_3_Tile.Add(""+Block_Name);
+        List_Mine_1B_1Star_3_Mineral.Add(""+Mineral_Name);
+        List_Mine_1B_1Star_3_Item.Add("Nothing");
+        
+      }
+      void _1B_1Star_4_Next(){
+      //SetBlockValue();//Change this depending on the mine
+        setVarsT0();
+        setVarsT0Mineral();
+        SetBlockValueMineral_1Star_4();
+        SetBlockValue_1Star_4();
+        Set_Main();
+        Calculate_Next();
+        //SetBlockValueMineral();//Change this depending on the mine
+        Set_Main_Mineral();
+        Calculate_Next_Mineral();
+        GenerateNextBlock();
+          GenerateNextMineral();
+        List_Mine_1B_1Star_4_BlockHealth.Add(1000);
+        List_Mine_1B_1Star_4_Tile.Add(""+Block_Name);
+        List_Mine_1B_1Star_4_Mineral.Add(""+Mineral_Name);
+        List_Mine_1B_1Star_4_Item.Add("Nothing");
+        
+      }
+      void _1B_1Star_5_Next(){
+      //SetBlockValue();//Change this depending on the mine
+        setVarsT0();
+        setVarsT0Mineral();
+        SetBlockValueMineral_1Star_5();
+        SetBlockValue_1Star_5();
+        Set_Main();
+        Calculate_Next();
+        //SetBlockValueMineral();//Change this depending on the mine
+        Set_Main_Mineral();
+        Calculate_Next_Mineral();
+        GenerateNextBlock();
+          GenerateNextMineral();
+        List_Mine_1B_1Star_5_BlockHealth.Add(1500);
+        List_Mine_1B_1Star_5_Tile.Add(""+Block_Name);
+        List_Mine_1B_1Star_5_Mineral.Add(""+Mineral_Name);
+        List_Mine_1B_1Star_5_Item.Add("Nothing");
+        
+      }
+      void _4B_1Star_1_Next(){
+      //SetBlockValue();//Change this depending on the mine
+        setVarsT0();
+        setVarsT0Mineral();
+        SetBlockValueMineral_1Star_1();
+        SetBlockValue_1Star_1();
+        Set_Main();
+        Calculate_Next();
+        //SetBlockValueMineral();//Change this depending on the mine
+        Set_Main_Mineral();
+        Calculate_Next_Mineral();
+        for(var i = 0; i < 4; i++){
+          GenerateNextBlock();
+          GenerateNextMineral();
+          List_Mine_4B_1Star_1_BlockHealth.Add(1);
+          List_Mine_4B_1Star_1_Tile.Add(""+Block_Name);
+          List_Mine_4B_1Star_1_Mineral.Add(""+Mineral_Name);
+          List_Mine_4B_1Star_1_Item.Add("Nothing");
+        }
+        
+        
+      }
+      void _4B_1Star_2_Next(){
+      //SetBlockValue();//Change this depending on the mine
+        setVarsT0();
+        setVarsT0Mineral();
+        SetBlockValueMineral_1Star_1();
+        SetBlockValue_1Star_1();
+        Set_Main();
+        Calculate_Next();
+        //SetBlockValueMineral();//Change this depending on the mine
+        Set_Main_Mineral();
+        Calculate_Next_Mineral();
+        for(var i = 0; i < 4; i++){
+          GenerateNextBlock();
+          GenerateNextMineral();
+          List_Mine_4B_1Star_2_BlockHealth.Add(1);
+          List_Mine_4B_1Star_2_Tile.Add(""+Block_Name);
+          List_Mine_4B_1Star_2_Mineral.Add(""+Mineral_Name);
+          List_Mine_4B_1Star_2_Item.Add("Nothing");
+        }
+        
+        
+      }
+      void Generate_Blocks(){
+        
+        if(Changed_Mines == true){
+          for(var i = 0; i < Lists_Mining_Area_1_Layers.Count;i++){
+            for(var i2 = 0;i2 < Lists_Mining_Area_1_Layers[i].Count; i2++){
+              Lists_Mining_Area_1_Layers[i][i2].SetActive(false);
+              Lists_Mining_Area_1_Layers_Mineral_Overlay[i][i2].SetActive(false);
+              Lists_Mining_Area_1_Layers_Item_Overlay[i][i2].SetActive(false);
+            }
+          }  
+          if(Size_Of_Mine == 1){
+            GameObject.Find("Big Camera Viewport").GetComponent<RawImage>().texture = CameraSize1;
+            SmallCameraCanvas.SetActive(false);
+            for(var i = 0; i < 256; i++){
+              Mining_Area_1_Automatons[i].SetActive(false);
+            Mining_Area_1_AutomatonsHit[i].SetActive(false);
+            }
+            Mining_Area_1_Automatons[255].SetActive(true);
+            Mining_Area_1_AutomatonsHit[255].SetActive(true);
+          }
+          if(Size_Of_Mine == 4){
+            GameObject.Find("Big Camera Viewport").GetComponent<RawImage>().texture = CameraSize1;
+            SmallCameraCanvas.SetActive(false);
+            //Mining_Area_1_Automatons[255].SetActive(true);
+            //Mining_Area_1_AutomatonsHit[255].SetActive(true);
+          }
+          Changed_Mines = false;
+        }
+        if(Size_Of_Mine == 4){
+          for(var i = 0; i < Lists_Mining_Area_1_Layers.Count;i++){            
+           for(var i2 = 255; i2 > 255 - 4;i2--){
+            Lists_Mining_Area_1_Layers[i][i2].SetActive(true);            
+            Lists_Mining_Area_1_Layers_Mineral_Overlay[i][i2].SetActive(true);
+            Lists_Mining_Area_1_Layers_Item_Overlay[i][i2].SetActive(true);
+           }            
+          } 
+          if(ActiveMine == List_Mine_4B_1Star_Names[0]){
+            int Interval = 0;
+            for(var i = 0; i < Lists_Mining_Area_1_Layers.Count;i++){            
+              for(var i2 = 255; i2 > 255 - 4;i2--){                
+                int CountFromZero = 6 * 4 - Interval;
+                if(List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - CountFromZero] <= 0){
+                  Lists_Mining_Area_1_Layers[i][i2].SetActive(false);
+                  Lists_Mining_Area_1_Layers_Mineral_Overlay[i][i2].SetActive(false);
+                  Lists_Mining_Area_1_Layers_Item_Overlay[i][i2].SetActive(false);                
+                }else{
+                  Lists_Mining_Area_1_Layers[i][i2].SetActive(true);
+                  Lists_Mining_Area_1_Layers_Mineral_Overlay[i][i2].SetActive(true);
+                  Lists_Mining_Area_1_Layers_Item_Overlay[i][i2].SetActive(true);                
+                }
+                Lists_Mining_Area_1_Layers[i][i2].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + List_Mine_4B_1Star_1_Tile[List_Mine_4B_1Star_1_Tile.Count - CountFromZero] +" 256", typeof(Sprite)) as Sprite;          
+                Lists_Mining_Area_1_Layers_Mineral_Overlay[i][i2].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/" + List_Mine_4B_1Star_1_Mineral[List_Mine_4B_1Star_1_Mineral.Count - CountFromZero], typeof(Sprite)) as Sprite;          
+                Lists_Mining_Area_1_Layers_Item_Overlay[i][i2].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Items/" + List_Mine_4B_1Star_1_Item[List_Mine_4B_1Star_1_Item.Count - CountFromZero], typeof(Sprite)) as Sprite;           
+                Interval++;
+              }
+            }
+          }
+          if(ActiveMine == List_Mine_4B_1Star_Names[1]){
+            int Interval = 0;
+            for(var i = 0; i < Lists_Mining_Area_1_Layers.Count;i++){            
+              for(var i2 = 255; i2 > 255 - 4;i2--){                
+                int CountFromZero = 6 * 4 - Interval;
+                if(List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - CountFromZero] <= 0){
+                  Lists_Mining_Area_1_Layers[i][i2].SetActive(false);
+                  Lists_Mining_Area_1_Layers_Mineral_Overlay[i][i2].SetActive(false);
+                  Lists_Mining_Area_1_Layers_Item_Overlay[i][i2].SetActive(false);                
+                }else{
+                  Lists_Mining_Area_1_Layers[i][i2].SetActive(true);
+                  Lists_Mining_Area_1_Layers_Mineral_Overlay[i][i2].SetActive(true);
+                  Lists_Mining_Area_1_Layers_Item_Overlay[i][i2].SetActive(true);                
+                }
+                Lists_Mining_Area_1_Layers[i][i2].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + List_Mine_4B_1Star_2_Tile[List_Mine_4B_1Star_2_Tile.Count - CountFromZero] +" 256", typeof(Sprite)) as Sprite;          
+                Lists_Mining_Area_1_Layers_Mineral_Overlay[i][i2].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/" + List_Mine_4B_1Star_2_Mineral[List_Mine_4B_1Star_2_Mineral.Count - CountFromZero], typeof(Sprite)) as Sprite;          
+                Lists_Mining_Area_1_Layers_Item_Overlay[i][i2].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Items/" + List_Mine_4B_1Star_2_Item[List_Mine_4B_1Star_2_Item.Count - CountFromZero], typeof(Sprite)) as Sprite;           
+                Interval++;
+              }
+            }
+          }
+        }
+        
+        
+        if(Size_Of_Mine == 1){          
+          //Show Last Block
+          for(var i = 0; i < Lists_Mining_Area_1_Layers.Count;i++){            
+            Lists_Mining_Area_1_Layers[i][255].SetActive(true);            
+            Lists_Mining_Area_1_Layers_Mineral_Overlay[i][255].SetActive(true);
+            Lists_Mining_Area_1_Layers_Item_Overlay[i][255].SetActive(true);
+          }  
+          if(ActiveMine == List_Mine_1B_1Star_Names[0]){
+            for(var i = 0; i < Lists_Mining_Area_1_Layers.Count;i++){            
+              int CountFromZero = 6 - i;
+              Lists_Mining_Area_1_Layers[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + List_Mine_1B_1Star_1_Tile[List_Mine_1B_1Star_1_Tile.Count - CountFromZero] +" 256", typeof(Sprite)) as Sprite;          
+              Lists_Mining_Area_1_Layers_Mineral_Overlay[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/" + List_Mine_1B_1Star_1_Mineral[List_Mine_1B_1Star_1_Mineral.Count - CountFromZero], typeof(Sprite)) as Sprite;          
+              Lists_Mining_Area_1_Layers_Item_Overlay[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Items/" + List_Mine_1B_1Star_1_Item[List_Mine_1B_1Star_1_Item.Count - CountFromZero], typeof(Sprite)) as Sprite;           
+            }
+          }
+          if(ActiveMine == List_Mine_1B_1Star_Names[1]){
+            for(var i = 0; i < Lists_Mining_Area_1_Layers.Count;i++){            
+              int CountFromZero = 6 - i;
+              Lists_Mining_Area_1_Layers[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + List_Mine_1B_1Star_2_Tile[List_Mine_1B_1Star_2_Tile.Count - CountFromZero] +" 256", typeof(Sprite)) as Sprite;          
+              Lists_Mining_Area_1_Layers_Mineral_Overlay[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/" + List_Mine_1B_1Star_2_Mineral[List_Mine_1B_1Star_2_Mineral.Count - CountFromZero], typeof(Sprite)) as Sprite;          
+              Lists_Mining_Area_1_Layers_Item_Overlay[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Items/" + List_Mine_1B_1Star_2_Item[List_Mine_1B_1Star_2_Item.Count - CountFromZero], typeof(Sprite)) as Sprite;           
+            }
+          }
+          if(ActiveMine == List_Mine_1B_1Star_Names[2]){
+            for(var i = 0; i < Lists_Mining_Area_1_Layers.Count;i++){            
+              int CountFromZero = 6 - i;
+              Lists_Mining_Area_1_Layers[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + List_Mine_1B_1Star_3_Tile[List_Mine_1B_1Star_3_Tile.Count - CountFromZero] +" 256", typeof(Sprite)) as Sprite;          
+              Lists_Mining_Area_1_Layers_Mineral_Overlay[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/" + List_Mine_1B_1Star_3_Mineral[List_Mine_1B_1Star_3_Mineral.Count - CountFromZero], typeof(Sprite)) as Sprite;          
+              Lists_Mining_Area_1_Layers_Item_Overlay[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Items/" + List_Mine_1B_1Star_3_Item[List_Mine_1B_1Star_3_Item.Count - CountFromZero], typeof(Sprite)) as Sprite;           
+            }
+          }
+          if(ActiveMine == List_Mine_1B_1Star_Names[3]){
+            for(var i = 0; i < Lists_Mining_Area_1_Layers.Count;i++){            
+              int CountFromZero = 6 - i;
+              Lists_Mining_Area_1_Layers[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + List_Mine_1B_1Star_4_Tile[List_Mine_1B_1Star_4_Tile.Count - CountFromZero] +" 256", typeof(Sprite)) as Sprite;          
+              Lists_Mining_Area_1_Layers_Mineral_Overlay[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/" + List_Mine_1B_1Star_4_Mineral[List_Mine_1B_1Star_4_Mineral.Count - CountFromZero], typeof(Sprite)) as Sprite;          
+              Lists_Mining_Area_1_Layers_Item_Overlay[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Items/" + List_Mine_1B_1Star_4_Item[List_Mine_1B_1Star_4_Item.Count - CountFromZero], typeof(Sprite)) as Sprite;           
+            }
+          }
+          if(ActiveMine == List_Mine_1B_1Star_Names[4]){
+            for(var i = 0; i < Lists_Mining_Area_1_Layers.Count;i++){            
+              int CountFromZero = 6 - i;
+              Lists_Mining_Area_1_Layers[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + List_Mine_1B_1Star_5_Tile[List_Mine_1B_1Star_5_Tile.Count - CountFromZero] +" 256", typeof(Sprite)) as Sprite;          
+              Lists_Mining_Area_1_Layers_Mineral_Overlay[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/" + List_Mine_1B_1Star_5_Mineral[List_Mine_1B_1Star_5_Mineral.Count - CountFromZero], typeof(Sprite)) as Sprite;          
+              Lists_Mining_Area_1_Layers_Item_Overlay[i][255].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Items/" + List_Mine_1B_1Star_5_Item[List_Mine_1B_1Star_5_Item.Count - CountFromZero], typeof(Sprite)) as Sprite;           
+            }
+          }
+        }
+      }
 	    void Mining_Area_1_Generate_All_Blocks(){
 	    	SetBlockValue();//Change this depending on the mine
 	    	Set_Main();
@@ -3332,9 +4039,9 @@ public string currentSetMain = "Dirt";
             if(Block_Name == "Dirt"||Block_Name == "Rich Soil"||Block_Name == "Stone"){
               
               
-              Lists_Mining_Area_1_Layers_Mineral_Overlay[i][i2].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/"+Mineral_Name, typeof(Sprite)) as Sprite;
+              Lists_Mining_Area_1_Layers_Mineral_Overlay[i][i2].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/"+Mineral_Name, typeof(Sprite)) as Sprite;
             }else{
-              Lists_Mining_Area_1_Layers_Mineral_Overlay[i][i2].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/Nothing", typeof(Sprite)) as Sprite;
+              Lists_Mining_Area_1_Layers_Mineral_Overlay[i][i2].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/Nothing", typeof(Sprite)) as Sprite;
             }
             Lists_Mining_Area_1_Layers_Item_Overlay[i][i2].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Items/Nothing", typeof(Sprite)) as Sprite;
 
@@ -3363,6 +4070,276 @@ public string currentSetMain = "Dirt";
           }
         
 	    }
+      void Mine_Blocks(){
+        double Automaton_1B_1Star_1 = 1;        
+        double Automaton_1B_1Star_2 = 1;
+        double Automaton_1B_1Star_3 = 1;
+        double Automaton_1B_1Star_4 = 1;
+        double Automaton_1B_1Star_5 = 1;
+        double Automaton_4B_1Star_1 = 4;
+        double Automaton_4B_1Star_2 = 1;
+        
+        if(Automaton_1B_1Star_1 > 0){
+           int NumOfLayers = 6;
+           //Replace Damage with correct Damage
+           double Damage = 10;
+           List_Mine_1B_1Star_1_BlockHealth[List_Mine_1B_1Star_1_BlockHealth.Count - NumOfLayers] -= Damage;
+           if(List_Mine_1B_1Star_1_BlockHealth[List_Mine_1B_1Star_1_BlockHealth.Count - NumOfLayers] <= 0){
+            //this is where you add the item to inventory
+            _1B_1Star_1_Next();
+           }
+        }
+        if(Automaton_1B_1Star_2 > 0){
+           int NumOfLayers = 6;
+           //Replace Damage with correct Damage
+           double Damage = 10;
+           List_Mine_1B_1Star_2_BlockHealth[List_Mine_1B_1Star_2_BlockHealth.Count - NumOfLayers] -= Damage;
+           if(List_Mine_1B_1Star_2_BlockHealth[List_Mine_1B_1Star_2_BlockHealth.Count - NumOfLayers] <= 0){
+            //this is where you add the item to inventory
+            _1B_1Star_2_Next();
+           }
+        }
+        if(Automaton_1B_1Star_3 > 0){
+           int NumOfLayers = 6;
+           //Replace Damage with correct Damage
+           double Damage = 10;
+           List_Mine_1B_1Star_3_BlockHealth[List_Mine_1B_1Star_3_BlockHealth.Count - NumOfLayers] -= Damage;
+           if(List_Mine_1B_1Star_3_BlockHealth[List_Mine_1B_1Star_3_BlockHealth.Count - NumOfLayers] <= 0){
+            //this is where you add the item to inventory
+            _1B_1Star_3_Next();
+           }
+        }
+        if(Automaton_1B_1Star_4 > 0){
+           int NumOfLayers = 6;
+           //Replace Damage with correct Damage
+           double Damage = 10;
+           List_Mine_1B_1Star_4_BlockHealth[List_Mine_1B_1Star_4_BlockHealth.Count - NumOfLayers] -= Damage;
+           if(List_Mine_1B_1Star_4_BlockHealth[List_Mine_1B_1Star_4_BlockHealth.Count - NumOfLayers] <= 0){
+            //this is where you add the item to inventory
+            _1B_1Star_4_Next();
+           }
+        }
+        if(Automaton_1B_1Star_5 > 0){
+           int NumOfLayers = 6;
+           //Replace Damage with correct Damage
+           double Damage = 10;
+           List_Mine_1B_1Star_5_BlockHealth[List_Mine_1B_1Star_5_BlockHealth.Count - NumOfLayers] -= Damage;
+           if(List_Mine_1B_1Star_5_BlockHealth[List_Mine_1B_1Star_5_BlockHealth.Count - NumOfLayers] <= 0){
+            //this is where you add the item to inventory
+            _1B_1Star_5_Next();
+           }
+        }
+        if(Automaton_4B_1Star_1 > 0){
+           int NumOfLayers = 6;
+           int NumOfBlocks = 4;
+           //Replace Damage with correct Damage
+           double Damage = 10;
+           
+           if(Automaton_4B_1Star_1 == 1){
+              if(List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4] > 0){
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[0]){
+                  Mining_Area_1_Automatons[255 - 1].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255 - 1].SetActive(false);               
+                  Mining_Area_1_Automatons[255 - 2].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255 - 2].SetActive(false);
+                  Mining_Area_1_Automatons[255 - 3].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255 - 3].SetActive(false);
+                  Mining_Area_1_Automatons[255].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255].SetActive(true);
+                }
+                
+
+                List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4] -= Damage;
+              }else if(List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4 + 1] > 0){
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[0]){
+                Mining_Area_1_Automatons[255].SetActive(false);
+                Mining_Area_1_AutomatonsHit[255].SetActive(false);
+                Mining_Area_1_Automatons[255 - 1].SetActive(true);
+                Mining_Area_1_AutomatonsHit[255 - 1].SetActive(true);
+                
+                }  
+                List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4 + 1] -= Damage;
+              }else if(List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4 + 2] > 0){
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[0]){
+                Mining_Area_1_Automatons[255 - 1].SetActive(false);
+                Mining_Area_1_AutomatonsHit[255 - 1].SetActive(false);
+                Mining_Area_1_Automatons[255 - 2].SetActive(true);
+                Mining_Area_1_AutomatonsHit[255 - 2].SetActive(true);
+                
+                }
+                List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4 + 2] -= Damage;
+              }else if(List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4 + 3] > 0){
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[0]){
+                  Mining_Area_1_Automatons[255 - 2].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255 - 2].SetActive(false);
+                  Mining_Area_1_Automatons[255 - 3].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255 - 3].SetActive(true);
+                
+                }
+                List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4 + 3] -= Damage;
+              }
+           }
+           if(Automaton_4B_1Star_1 == 2){
+              if(List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4] > 0){
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[0]){
+                  Mining_Area_1_Automatons[255 - 2].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255 - 2].SetActive(false);
+                  Mining_Area_1_Automatons[255 - 3].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255 - 3].SetActive(false);
+                  Mining_Area_1_Automatons[255].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255].SetActive(true);
+                  Mining_Area_1_Automatons[255 - 1].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255 - 1].SetActive(true);
+                }
+                List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4] -= Damage;
+                List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4 + 1] -= Damage;
+              }else if(List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4 + 2] > 0){
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[0]){
+                  Mining_Area_1_Automatons[255].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255].SetActive(false);
+                  Mining_Area_1_Automatons[255 - 1].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255 - 1].SetActive(false);
+                  
+                  Mining_Area_1_Automatons[255 - 2].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255 - 2].SetActive(true);
+                  Mining_Area_1_Automatons[255 - 3].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255 - 3].SetActive(true);
+                }
+                List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4 + 2] -= Damage;
+                List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4 + 3] -= Damage;
+              }
+           }
+           if(Automaton_4B_1Star_1 == 4){
+              if(List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4] > 0){
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[0]){
+                  Mining_Area_1_Automatons[255].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255].SetActive(true);
+                  Mining_Area_1_Automatons[255 - 1].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255 - 1].SetActive(true);
+                  Mining_Area_1_Automatons[255 - 2].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255 - 2].SetActive(true);
+                  Mining_Area_1_Automatons[255 - 3].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255 - 3].SetActive(true);
+                }
+                List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4] -= Damage;
+                List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4 + 1] -= Damage;                
+                List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4 + 2] -= Damage;
+                List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4 + 3] -= Damage;
+              }
+           }
+           
+           if(List_Mine_4B_1Star_1_BlockHealth[List_Mine_4B_1Star_1_BlockHealth.Count - NumOfLayers * 4 + 3] <= 0){
+            //this is where you add the item to inventory
+            _4B_1Star_1_Next();
+           }
+        }
+
+        if(Automaton_4B_1Star_2 > 0){
+           int NumOfLayers = 6;
+           int NumOfBlocks = 4;
+           //Replace Damage with correct Damage
+           double Damage = 10;
+             if(Automaton_4B_1Star_2 == 1){
+              if(List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4] > 0){
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[1]){
+                  Mining_Area_1_Automatons[255 - 1].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255 - 1].SetActive(false);               
+                  Mining_Area_1_Automatons[255 - 2].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255 - 2].SetActive(false);
+                  Mining_Area_1_Automatons[255 - 3].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255 - 3].SetActive(false);
+                  Mining_Area_1_Automatons[255].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255].SetActive(true);
+                }
+                
+
+                List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4] -= Damage;
+              }else if(List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4 + 1] > 0){
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[1]){
+                Mining_Area_1_Automatons[255].SetActive(false);
+                Mining_Area_1_AutomatonsHit[255].SetActive(false);
+                Mining_Area_1_Automatons[255 - 1].SetActive(true);
+                Mining_Area_1_AutomatonsHit[255 - 1].SetActive(true);
+                
+                }  
+                List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4 + 1] -= Damage;
+              }else if(List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4 + 2] > 0){
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[1]){
+                Mining_Area_1_Automatons[255 - 1].SetActive(false);
+                Mining_Area_1_AutomatonsHit[255 - 1].SetActive(false);
+                Mining_Area_1_Automatons[255 - 2].SetActive(true);
+                Mining_Area_1_AutomatonsHit[255 - 2].SetActive(true);
+                
+                }
+                List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4 + 2] -= Damage;
+              }else if(List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4 + 3] > 0){
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[1]){
+                  Mining_Area_1_Automatons[255 - 2].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255 - 2].SetActive(false);
+                  Mining_Area_1_Automatons[255 - 3].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255 - 3].SetActive(true);
+                
+                }
+                List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4 + 3] -= Damage;
+              }
+           }
+           if(Automaton_4B_1Star_2 == 2){
+              if(List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4] > 0){
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[1]){
+                  Mining_Area_1_Automatons[255 - 2].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255 - 2].SetActive(false);
+                  Mining_Area_1_Automatons[255 - 3].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255 - 3].SetActive(false);
+                  Mining_Area_1_Automatons[255].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255].SetActive(true);
+                  Mining_Area_1_Automatons[255 - 1].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255 - 1].SetActive(true);
+                }
+                List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4] -= Damage;
+                List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4 + 1] -= Damage;
+              }else if(List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4 + 2] > 0){
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[1]){
+                  Mining_Area_1_Automatons[255].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255].SetActive(false);
+                  Mining_Area_1_Automatons[255 - 1].SetActive(false);
+                  Mining_Area_1_AutomatonsHit[255 - 1].SetActive(false);
+                  
+                  Mining_Area_1_Automatons[255 - 2].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255 - 2].SetActive(true);
+                  Mining_Area_1_Automatons[255 - 3].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255 - 3].SetActive(true);
+                }
+                List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4 + 2] -= Damage;
+                List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4 + 3] -= Damage;
+              }
+           }
+           if(Automaton_4B_1Star_2 == 4){
+              if(List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4] > 0){
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[1]){
+                  Mining_Area_1_Automatons[255].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255].SetActive(true);
+                  Mining_Area_1_Automatons[255 - 1].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255 - 1].SetActive(true);
+                  Mining_Area_1_Automatons[255 - 2].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255 - 2].SetActive(true);
+                  Mining_Area_1_Automatons[255 - 3].SetActive(true);
+                  Mining_Area_1_AutomatonsHit[255 - 3].SetActive(true);
+                }
+                List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4] -= Damage;
+                List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4 + 1] -= Damage;                
+                List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4 + 2] -= Damage;
+                List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4 + 3] -= Damage;
+              }
+           }
+           
+           if(List_Mine_4B_1Star_2_BlockHealth[List_Mine_4B_1Star_2_BlockHealth.Count - NumOfLayers * 4 + 3] <= 0){
+            //this is where you add the item to inventory
+            _4B_1Star_2_Next();
+           }
+        } 
+      }
+
+
 	    void Mining_Area_1_Mine_Blocks(){
 	    	
 	    	for(var i = Lists_Mining_Area_1_Layers[0].Count -1;i >= 0; i--){
@@ -3401,6 +4378,7 @@ public string currentSetMain = "Dirt";
 	    	}
 	    }
 	    void Mining_Area_1_Move_Up_One(){
+        LayerNum++;
 	    	SetBlockValue();//Change this depending on the mine
 	    	Set_Main();
 	    	Calculate_Next();
@@ -3434,11 +4412,11 @@ public string currentSetMain = "Dirt";
 				Lists_Mining_Area_1_Layers[3][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + Layer_5_Name, typeof(Sprite)) as Sprite;	    		
 				Lists_Mining_Area_1_Layers[4][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + Layer_6_Name, typeof(Sprite)) as Sprite;	    		
 
-        Lists_Mining_Area_1_Layers_Mineral_Overlay[0][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + Layer_2_Name_Mineral_Overlay, typeof(Sprite)) as Sprite;         
-        Lists_Mining_Area_1_Layers_Mineral_Overlay[1][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + Layer_3_Name_Mineral_Overlay, typeof(Sprite)) as Sprite;         
-        Lists_Mining_Area_1_Layers_Mineral_Overlay[2][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + Layer_4_Name_Mineral_Overlay, typeof(Sprite)) as Sprite;         
-        Lists_Mining_Area_1_Layers_Mineral_Overlay[3][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + Layer_5_Name_Mineral_Overlay, typeof(Sprite)) as Sprite;         
-        Lists_Mining_Area_1_Layers_Mineral_Overlay[4][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + Layer_6_Name_Mineral_Overlay, typeof(Sprite)) as Sprite;         
+        Lists_Mining_Area_1_Layers_Mineral_Overlay[0][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/" + Layer_2_Name_Mineral_Overlay, typeof(Sprite)) as Sprite;         
+        Lists_Mining_Area_1_Layers_Mineral_Overlay[1][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/" + Layer_3_Name_Mineral_Overlay, typeof(Sprite)) as Sprite;         
+        Lists_Mining_Area_1_Layers_Mineral_Overlay[2][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/" + Layer_4_Name_Mineral_Overlay, typeof(Sprite)) as Sprite;         
+        Lists_Mining_Area_1_Layers_Mineral_Overlay[3][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/" + Layer_5_Name_Mineral_Overlay, typeof(Sprite)) as Sprite;         
+        Lists_Mining_Area_1_Layers_Mineral_Overlay[4][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/" + Layer_6_Name_Mineral_Overlay, typeof(Sprite)) as Sprite;         
 
         Lists_Mining_Area_1_Layers_Item_Overlay[0][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Items/" + Layer_2_Name_Item_Overlay, typeof(Sprite)) as Sprite;         
         Lists_Mining_Area_1_Layers_Item_Overlay[1][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Items/" + Layer_3_Name_Item_Overlay, typeof(Sprite)) as Sprite;         
@@ -3449,9 +4427,9 @@ public string currentSetMain = "Dirt";
         GenerateNextMineral();
 				Lists_Mining_Area_1_Layers[5][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/" + Block_Name + " 256", typeof(Sprite)) as Sprite;	    		
         if(Block_Name == "Dirt"||Block_Name == "Rich Soil"||Block_Name == "Stone"){
-              Lists_Mining_Area_1_Layers_Mineral_Overlay[5][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/"+Mineral_Name, typeof(Sprite)) as Sprite;
+              Lists_Mining_Area_1_Layers_Mineral_Overlay[5][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/"+Mineral_Name, typeof(Sprite)) as Sprite;
             }else{
-              Lists_Mining_Area_1_Layers_Mineral_Overlay[5][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Tiles/Nothing", typeof(Sprite)) as Sprite;
+              Lists_Mining_Area_1_Layers_Mineral_Overlay[5][i].GetComponent < SpriteRenderer > ().sprite = Resources.Load("Mineral/Nothing", typeof(Sprite)) as Sprite;
             }
 				Lists_Mining_Area_1_Layers[0][i].SetActive(true);
         Lists_Mining_Area_1_Layers_Mineral_Overlay[0][i].SetActive(true);
@@ -3868,11 +4846,9 @@ public string currentSetMain = "Dirt";
       }
 	    void Update()
   	  {
-        Debug.Log(Lists_Mining_Area_1_Layers[1].Count);
-        Debug.Log(Lists_Mining_Area_1_Layers_Mineral_Overlay[1].Count);
-        Debug.Log(Lists_Mining_Area_1_Layers_Mineral_Overlay[3].Count);
-        Debug.Log(Lists_Mining_Area_1_Layers_Mineral_Overlay[4].Count);
-        Debug.Log(Lists_Mining_Area_1_Layers_Mineral_Overlay[5].Count);
+        GameObject.Find("LayerNum Text").GetComponent<UnityEngine.UI.Text>().text = "Layer "+LayerNum;
+        GameObject.Find("LayerNum Text Shadow").GetComponent<UnityEngine.UI.Text>().text = "Layer "+LayerNum;
+
         int FightIsActive = 0;
         Update_Menus_Breakdown();    
         Set_Buttons();
@@ -3926,14 +4902,64 @@ public string currentSetMain = "Dirt";
               Enemy.SetActive(false);
               //Lightning_Skill.SetActive(false);
             }
+
         if(List_Menus_Breakdown_Text[0].GetComponent<UnityEngine.UI.Text>().text == "Play Game"){
+          
           if(List_Menus_Breakdown_Text[1].GetComponent<UnityEngine.UI.Text>().text == "Mine"){
-              if(List_Menus_Breakdown_Text[2].GetComponent<UnityEngine.UI.Text>().text == "Coal Vain"){
-                
+          
+              if(List_Menus_Breakdown_Text[2].GetComponent<UnityEngine.UI.Text>().text == "1 ☆"){
+            Size_Of_Mine = 1;
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_1B_1Star_Names[0]){
+                  ActiveMine = List_Mine_1B_1Star_Names[0];
+                  Mining_Big_Camera.SetActive(true);
+                }
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_1B_1Star_Names[1]){
+                  ActiveMine = List_Mine_1B_1Star_Names[1];
+                  Mining_Big_Camera.SetActive(true);
+                }
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_1B_1Star_Names[2]){
+                  ActiveMine = List_Mine_1B_1Star_Names[2];
+                  Mining_Big_Camera.SetActive(true);
+                }
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_1B_1Star_Names[3]){
+                  ActiveMine = List_Mine_1B_1Star_Names[3];
+                  Mining_Big_Camera.SetActive(true);
+                }
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_1B_1Star_Names[4]){
+                  ActiveMine = List_Mine_1B_1Star_Names[4];
+                  Mining_Big_Camera.SetActive(true);
+                }
+
               }else{
-                Mining_Big_Camera.SetActive(false);
-                Mining_Small_Camera.SetActive(false);
-              } 
+                
+              }
+              if(List_Menus_Breakdown_Text[2].GetComponent<UnityEngine.UI.Text>().text == "4 ☆"){
+          Size_Of_Mine = 4;
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[0]){
+                  ActiveMine = List_Mine_4B_1Star_Names[0];
+                  Mining_Big_Camera.SetActive(true);
+                }
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[1]){
+                  ActiveMine = List_Mine_4B_1Star_Names[1];
+                  Mining_Big_Camera.SetActive(true);
+                }
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[2]){
+                  ActiveMine = List_Mine_4B_1Star_Names[2];
+                  Mining_Big_Camera.SetActive(true);
+                }
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[3]){
+                  ActiveMine = List_Mine_4B_1Star_Names[3];
+                  Mining_Big_Camera.SetActive(true);
+                }
+                if(List_Menus_Breakdown_Text[3].GetComponent<UnityEngine.UI.Text>().text == List_Mine_4B_1Star_Names[4]){
+                  ActiveMine = List_Mine_4B_1Star_Names[4];
+                  Mining_Big_Camera.SetActive(true);
+                }
+
+              }else{
+                
+              }
+
           }
           if(List_Menus_Breakdown_Text[1].GetComponent<UnityEngine.UI.Text>().text == "Forge"){
             
@@ -4802,27 +5828,114 @@ public string currentSetMain = "Dirt";
     /*Compressed_Ice*/
     R_Compressed_Ice);
   }
-  void CalculateAreaMineral(double R_Nothing,double C_Coal_Few, double C_Coal_Some, double C_Coal_Lots) {
-    R_Nothing = 1 - R_Nothing;
-    R_Coal_Few = R_Nothing - C_Coal_Few;
+  void CalculateAreaMineral(double C_Nothing,double C_Coal_One,double C_Coal_Few, double C_Coal_Some, double C_Coal_Lots,double C_Coal_Tons, double C_Sapphire_One,double C_Sapphire_Few,double C_Sapphire_Some,double C_Sapphire_Lots,double C_Sapphire_Tons,double C_Ruby_One,double C_Ruby_Few,double C_Ruby_Some,double C_Ruby_Lots,double C_Ruby_Tons,double C_Carnelian_One,double C_Carnelian_Few,double C_Carnelian_Some,double C_Carnelian_Lots,double C_Carnelian_Tons,double C_Jade_One,double C_Jade_Few,double C_Jade_Some,double C_Jade_Lots,double C_Jade_Tons,double C_Emerald_One,double C_Emerald_Few,double C_Emerald_Some,double C_Emerald_Lots,double C_Emerald_Tons,double C_Amethyst_One,double C_Amethyst_Few,double C_Amethyst_Some,double C_Amethyst_Lots,double C_Amethyst_Tons,double C_Tanzanite_One,double C_Tanzanite_Few,double C_Tanzanite_Some,double C_Tanzanite_Lots,double C_Tanzanite_Tons,double C_Sunstone_One,double C_Sunstone_Few,double C_Sunstone_Some,double C_Sunstone_Lots,double C_Sunstone_Tons) {
+    R_Nothing = 1 - C_Nothing;
+    R_Coal_One = R_Nothing - C_Coal_One;
+    R_Coal_Few = R_Coal_One - C_Coal_Few;
     R_Coal_Some = R_Coal_Few - C_Coal_Some;
-    R_Coal_Lots = R_Coal_Some - R_Coal_Lots;
+    R_Coal_Lots = R_Coal_Some - C_Coal_Lots;
+    R_Coal_Tons = R_Coal_Lots - C_Coal_Tons;
+    R_Sapphire_One = R_Coal_Tons - C_Sapphire_One;
+    R_Sapphire_Few = R_Sapphire_One - C_Sapphire_Few;
+    R_Sapphire_Some = R_Sapphire_Few - C_Sapphire_Some;
+    R_Sapphire_Lots = R_Sapphire_Some - C_Sapphire_Lots;
+    R_Sapphire_Tons = R_Sapphire_Lots - C_Sapphire_Tons;
+    R_Ruby_One = R_Sapphire_Tons - C_Ruby_One;
+    R_Ruby_Few = R_Ruby_One - C_Ruby_Few;
+    R_Ruby_Some = R_Ruby_Few - C_Ruby_Some;
+    R_Ruby_Lots = R_Ruby_Some - C_Ruby_Lots;
+    R_Ruby_Tons = R_Ruby_Lots - C_Ruby_Tons;
+    R_Carnelian_One = R_Ruby_Tons - C_Carnelian_One;
+    R_Carnelian_Few = R_Carnelian_One - C_Carnelian_Few;
+    R_Carnelian_Some = R_Carnelian_Few - C_Carnelian_Some;
+    R_Carnelian_Lots = R_Carnelian_Some - C_Carnelian_Lots;
+    R_Carnelian_Tons = R_Carnelian_Lots - C_Carnelian_Tons;
+    R_Jade_One = R_Carnelian_Tons - C_Jade_One;
+    R_Jade_Few = R_Jade_One - C_Jade_Few;
+    R_Jade_Some = R_Jade_Few - C_Jade_Some;
+    R_Jade_Lots = R_Jade_Some - C_Jade_Lots;
+    R_Jade_Tons = R_Jade_Lots - C_Jade_Tons;
+    R_Emerald_One = R_Jade_Tons - C_Emerald_One;
+    R_Emerald_Few = R_Emerald_One - C_Emerald_Few;
+    R_Emerald_Some = R_Emerald_Few - C_Emerald_Some;
+    R_Emerald_Lots = R_Emerald_Some - C_Emerald_Lots;
+    R_Emerald_Tons = R_Emerald_Lots - C_Emerald_Tons;
+    R_Amethyst_One = R_Emerald_Tons - C_Amethyst_One;
+    R_Amethyst_Few = R_Amethyst_One - C_Amethyst_Few;
+    R_Amethyst_Some = R_Amethyst_Few - C_Amethyst_Some;
+    R_Amethyst_Lots = R_Amethyst_Some - C_Amethyst_Lots;
+    R_Amethyst_Tons = R_Amethyst_Lots - C_Amethyst_Tons;
+    R_Tanzanite_One = R_Amethyst_Tons - C_Tanzanite_One;
+    R_Tanzanite_Few = R_Tanzanite_One - C_Tanzanite_Few;
+    R_Tanzanite_Some = R_Tanzanite_Few - C_Tanzanite_Some;
+    R_Tanzanite_Lots = R_Tanzanite_Some - C_Tanzanite_Lots;
+    R_Tanzanite_Tons = R_Tanzanite_Lots - C_Tanzanite_Tons;
+    R_Sunstone_One = R_Tanzanite_Tons - C_Sunstone_One;
+    R_Sunstone_Few = R_Sunstone_One - C_Sunstone_Few;
+    R_Sunstone_Some = R_Sunstone_Few - C_Sunstone_Some;
+    R_Sunstone_Lots = R_Sunstone_Some - C_Sunstone_Lots;
+    R_Sunstone_Tons = R_Sunstone_Lots - C_Sunstone_Tons;
   }  
   public void Calculate_Next_Mineral() {
     CalculateAreaMineral(
       R_Nothing,
+      R_Coal_One,
       R_Coal_Few,
       R_Coal_Some,
-      R_Coal_Lots
+      R_Coal_Lots,
+      R_Coal_Tons,
+      R_Sapphire_One,
+      R_Sapphire_Few,
+      R_Sapphire_Some,
+      R_Sapphire_Lots,
+      R_Sapphire_Tons,
+      R_Ruby_One,
+      R_Ruby_Few,
+      R_Ruby_Some,
+      R_Ruby_Lots,
+      R_Ruby_Tons,
+      R_Carnelian_One,
+      R_Carnelian_Few,
+      R_Carnelian_Some,
+      R_Carnelian_Lots,
+      R_Carnelian_Tons,
+      R_Jade_One,
+      R_Jade_Few,
+      R_Jade_Some,
+      R_Jade_Lots,
+      R_Jade_Tons,
+      R_Emerald_One,
+      R_Emerald_Few,
+      R_Emerald_Some,
+      R_Emerald_Lots,
+      R_Emerald_Tons,
+      R_Amethyst_One,
+      R_Amethyst_Few,
+      R_Amethyst_Some,
+      R_Amethyst_Lots,
+      R_Amethyst_Tons,
+      R_Tanzanite_One,
+      R_Tanzanite_Few,
+      R_Tanzanite_Some,
+      R_Tanzanite_Lots,
+      R_Tanzanite_Tons,
+      R_Sunstone_One,
+      R_Sunstone_Few,
+      R_Sunstone_Some,
+      R_Sunstone_Lots,
+      R_Sunstone_Tons
     );
   }
   public void GenerateNextMineral() {
 
-    double R = RandomMap.Next(0, 100000000);
-    R = (float)R/100000000;
-    int R_Num = RandomMap.Next(1,4);
+    double R = UnityEngine.Random.Range(0.0f, 1.0f);
+    int R_Num_Single = UnityEngine.Random.Range(1,4);
+    int R_Num = UnityEngine.Random.Range(1,4);
     if(R > R_Nothing){
       Mineral_Name = "Nothing";
+    }
+    else if (R > R_Coal_One) {
+      Mineral_Name = "One Coal "+R_Num_Single.ToString();
     }
     else if (R > R_Coal_Few) {
       Mineral_Name = "Few Coal "+R_Num.ToString();
@@ -4831,12 +5944,136 @@ public string currentSetMain = "Dirt";
       Mineral_Name = "Some Coal "+R_Num.ToString();
     }
     else if (R > R_Coal_Lots) {
-      Mineral_Name = "Lots of Coal "+R_Num.ToString();
+      Mineral_Name = "Lots Coal "+R_Num.ToString();
+    }
+    else if (R > R_Coal_Tons) {
+      Mineral_Name = "Tons Coal "+R_Num.ToString();
+    }
+    else if (R > R_Sapphire_One) {
+      Mineral_Name = "One Sapphire "+R_Num_Single.ToString();
+    }
+    else if (R > R_Sapphire_Few) {
+      Mineral_Name = "Few Sapphire "+R_Num.ToString();
+    }
+    else if (R > R_Sapphire_Some) {
+      Mineral_Name = "Some Sapphire "+R_Num.ToString();
+    }
+    else if (R > R_Sapphire_Lots) {
+      Mineral_Name = "Lots Sapphire "+R_Num.ToString();
+    }
+    else if (R > R_Sapphire_Tons) {
+      Mineral_Name = "Tons Sapphire "+R_Num.ToString();
+    }
+    else if (R > R_Ruby_One) {
+      Mineral_Name = "One Ruby "+R_Num_Single.ToString();
+    }
+    else if (R > R_Ruby_Few) {
+      Mineral_Name = "Few Ruby "+R_Num.ToString();
+    }
+    else if (R > R_Ruby_Some) {
+      Mineral_Name = "Some Ruby "+R_Num.ToString();
+    }
+    else if (R > R_Ruby_Lots) {
+      Mineral_Name = "Lots Ruby "+R_Num.ToString();
+    }
+    else if (R > R_Ruby_Tons) {
+      Mineral_Name = "Tons Ruby "+R_Num.ToString();
+    }
+    else if (R > R_Carnelian_One) {
+      Mineral_Name = "One Carnelian "+R_Num_Single.ToString();
+    }
+    else if (R > R_Carnelian_Few) {
+      Mineral_Name = "Few Carnelian "+R_Num.ToString();
+    }
+    else if (R > R_Carnelian_Some) {
+      Mineral_Name = "Some Carnelian "+R_Num.ToString();
+    }
+    else if (R > R_Carnelian_Lots) {
+      Mineral_Name = "Lots Carnelian "+R_Num.ToString();
+    }
+    else if (R > R_Carnelian_Tons) {
+      Mineral_Name = "Tons Carnelian "+R_Num.ToString();
+    }
+    else if (R > R_Jade_One) {
+      Mineral_Name = "One Jade "+R_Num_Single.ToString();
+    }
+    else if (R > R_Jade_Few) {
+      Mineral_Name = "Few Jade "+R_Num.ToString();
+    }
+    else if (R > R_Jade_Some) {
+      Mineral_Name = "Some Jade "+R_Num.ToString();
+    }
+    else if (R > R_Jade_Lots) {
+      Mineral_Name = "Lots Jade "+R_Num.ToString();
+    }
+    else if (R > R_Jade_Tons) {
+      Mineral_Name = "Tons Jade "+R_Num.ToString();
+    }
+    else if (R > R_Emerald_One) {
+      Mineral_Name = "One Emerald "+R_Num_Single.ToString();
+    }
+    else if (R > R_Emerald_Few) {
+      Mineral_Name = "Few Emerald "+R_Num.ToString();
+    }
+    else if (R > R_Emerald_Some) {
+      Mineral_Name = "Some Emerald "+R_Num.ToString();
+    }
+    else if (R > R_Emerald_Lots) {
+      Mineral_Name = "Lots Emerald "+R_Num.ToString();
+    }
+    else if (R > R_Emerald_Tons) {
+      Mineral_Name = "Tons Emerald "+R_Num.ToString();
+    }
+    else if (R > R_Amethyst_One) {
+      Mineral_Name = "One Amethyst "+R_Num_Single.ToString();
+    }
+    else if (R > R_Amethyst_Few) {
+      Mineral_Name = "Few Amethyst "+R_Num.ToString();
+    }
+    else if (R > R_Amethyst_Some) {
+      Mineral_Name = "Some Amethyst "+R_Num.ToString();
+    }
+    else if (R > R_Amethyst_Lots) {
+      Mineral_Name = "Lots Amethyst "+R_Num.ToString();
+    }
+    else if (R > R_Amethyst_Tons) {
+      Mineral_Name = "Tons Amethyst "+R_Num.ToString();
+    }
+    else if (R > R_Tanzanite_One) {
+      Mineral_Name = "One Tanzanite "+R_Num_Single.ToString();
+    }
+    else if (R > R_Tanzanite_Few) {
+      Mineral_Name = "Few Tanzanite "+R_Num.ToString();
+    }
+    else if (R > R_Tanzanite_Some) {
+      Mineral_Name = "Some Tanzanite "+R_Num.ToString();
+    }
+    else if (R > R_Tanzanite_Lots) {
+      Mineral_Name = "Lots Tanzanite "+R_Num.ToString();
+    }
+    else if (R > R_Tanzanite_Tons) {
+      Mineral_Name = "Tons Tanzanite "+R_Num.ToString();
+    }
+    else if (R > R_Sunstone_One) {
+      Mineral_Name = "One Sunstone "+R_Num_Single.ToString();
+    }
+    else if (R > R_Sunstone_Few) {
+      Mineral_Name = "Few Sunstone "+R_Num.ToString();
+    }
+    else if (R > R_Sunstone_Some) {
+      Mineral_Name = "Some Sunstone "+R_Num.ToString();
+    }
+    else if (R > R_Sunstone_Lots) {
+      Mineral_Name = "Lots Sunstone "+R_Num.ToString();
+    }
+    else if (R > R_Sunstone_Tons) {
+      Mineral_Name = "Tons Sunstone "+R_Num.ToString();
     }
   }
   public void GenerateNextBlock() {
-    double R = RandomMap.Next(0, 100000000);
-    R = (float)R/100000000;
+
+    double R = UnityEngine.Random.Range(0.0f, 1.0f);
+
     if (R > R_Dirt) {
       Block_Name = "Dirt";
     }
@@ -5016,20 +6253,105 @@ public string currentSetMain = "Dirt";
     }
   }
   public void Set_Main_Mineral() {
-    SetMainMineral = 1 - (R_Nothing + R_Coal_Few + R_Coal_Some + R_Coal_Lots);
+    SetMainMineral = 1 - (R_Nothing + R_Coal_One +R_Coal_Few + R_Coal_Some + R_Coal_Lots + R_Coal_Tons + R_Sapphire_One + R_Sapphire_Few + R_Sapphire_Some + R_Sapphire_Lots + R_Sapphire_Tons + R_Ruby_One + R_Ruby_Few + R_Ruby_Some + R_Ruby_Lots + R_Ruby_Tons + R_Carnelian_One + R_Carnelian_Few + R_Carnelian_Some + R_Carnelian_Lots + R_Carnelian_Tons + R_Jade_One + R_Jade_Few + R_Jade_Some + R_Jade_Lots + R_Jade_Tons + R_Emerald_One + R_Emerald_Few + R_Emerald_Some + R_Emerald_Lots + R_Emerald_Tons + R_Amethyst_One + R_Amethyst_Few + R_Amethyst_Some + R_Amethyst_Lots + R_Amethyst_Tons + R_Tanzanite_One + R_Tanzanite_Few + R_Tanzanite_Some + R_Tanzanite_Lots + R_Tanzanite_Tons + R_Sunstone_One + R_Sunstone_Few + R_Sunstone_Some + R_Sunstone_Lots + R_Sunstone_Tons); 
     R_Nothing = SetMainMineral;
   }
   public void setVarsT0Mineral(){
     R_Nothing = 0f;
+    R_Coal_One = 0f;
     R_Coal_Few = 0f;
     R_Coal_Some = 0f;
     R_Coal_Lots = 0f;
+    R_Coal_Tons = 0f;
+    R_Sapphire_One = 0f;
+    R_Sapphire_Few = 0f;
+    R_Sapphire_Some = 0f;
+    R_Sapphire_Lots = 0f;
+    R_Sapphire_Tons = 0f;
+    R_Ruby_One = 0f;
+    R_Ruby_Few = 0f;
+    R_Ruby_Some = 0f;
+    R_Ruby_Lots = 0f;
+    R_Ruby_Tons = 0f;
+    R_Carnelian_One = 0f;
+    R_Carnelian_Few = 0f;
+    R_Carnelian_Some = 0f;
+    R_Carnelian_Lots = 0f;
+    R_Carnelian_Tons = 0f;
+    R_Jade_One = 0f;
+    R_Jade_Few = 0f;
+    R_Jade_Some = 0f;
+    R_Jade_Lots = 0f;
+    R_Jade_Tons = 0f;
+    R_Emerald_One = 0f;
+    R_Emerald_Few = 0f;
+    R_Emerald_Some = 0f;
+    R_Emerald_Lots = 0f;
+    R_Emerald_Tons = 0f;
+    R_Amethyst_One = 0f;
+    R_Amethyst_Few = 0f;
+    R_Amethyst_Some = 0f;
+    R_Amethyst_Lots = 0f;
+    R_Amethyst_Tons = 0f;
+    R_Tanzanite_One = 0f;
+    R_Tanzanite_Few = 0f;
+    R_Tanzanite_Some = 0f;
+    R_Tanzanite_Lots = 0f;
+    R_Tanzanite_Tons = 0f;
+    R_Sunstone_One = 0f;
+    R_Sunstone_Few = 0f;
+    R_Sunstone_Some = 0f;
+    R_Sunstone_Lots = 0f;
+    R_Sunstone_Tons = 0f;
   }
+  
   public void SetBlockValueMineral(){
     R_Nothing = 0f;
-    R_Coal_Few = 0.3f;
-    R_Coal_Some = 0.1f;
-    R_Coal_Lots = 0.05f; 
+    R_Coal_One = 0.1f;
+    R_Coal_Few = 0.05f;
+    R_Coal_Some = 0.02f;
+    R_Coal_Lots = 0.01f;
+    R_Coal_Tons = 0.005f;
+    R_Sapphire_One = 0.01f;
+    R_Sapphire_Few = 0.005f;
+    R_Sapphire_Some = 0.002f;
+    R_Sapphire_Lots = 0.001f;
+    R_Sapphire_Tons = 0.0005f; 
+    R_Ruby_One = 0.01f;
+    R_Ruby_Few = 0.005f;
+    R_Ruby_Some = 0.002f;
+    R_Ruby_Lots = 0.001f;
+    R_Ruby_Tons = 0.0005f;
+    R_Carnelian_One = 0.01f;
+    R_Carnelian_Few = 0.005f;
+    R_Carnelian_Some = 0.002f;
+    R_Carnelian_Lots = 0.001f;
+    R_Carnelian_Tons = 0.0005f;
+    R_Jade_One = 0.01f;
+    R_Jade_Few = 0.005f;
+    R_Jade_Some = 0.002f;
+    R_Jade_Lots = 0.001f;
+    R_Jade_Tons = 0.0005f;
+    R_Emerald_One = 0.01f;
+    R_Emerald_Few = 0.005f;
+    R_Emerald_Some = 0.002f;
+    R_Emerald_Lots = 0.001f;
+    R_Emerald_Tons = 0.0005f;
+    R_Amethyst_One = 0.01f;
+    R_Amethyst_Few = 0.005f;
+    R_Amethyst_Some = 0.002f;
+    R_Amethyst_Lots = 0.001f;
+    R_Amethyst_Tons = 0.0005f;
+    R_Tanzanite_One = 0.003f;
+    R_Tanzanite_Few = 0.0025f;
+    R_Tanzanite_Some = 0.0015f;
+    R_Tanzanite_Lots = 0.001f;
+    R_Tanzanite_Tons = 0.0005f;
+    R_Sunstone_One = 0.003f;
+    R_Sunstone_Few = 0.0025f;
+    R_Sunstone_Some = 0.0015f;
+    R_Sunstone_Lots = 0.001f;
+    R_Sunstone_Tons = 0.0005f;
   }
   public void setVarsT0() {
     R_Dirt = 0f;
@@ -5092,67 +6414,67 @@ public string currentSetMain = "Dirt";
     R_Hardened_Ice = 0f;
     R_Compressed_Ice = 0f;
   }
-  
+
   public void SetBlockValue() {
-    R_Dirt = 0.0;
-    R_Rich_Soil = 0.05;
-    R_Very_Rich_Soil = 0.1;
-    R_Extremly_Rich_Soil = 0.005;
-    R_Grass = 0.0;
-    R_Valunite = 0.0;
-    R_Dark_Valunite = 0.0;
-    R_Bamboo = 0.0;
-    R_Wood = 0.0;
-    R_Sandstone = 0.0;
-    R_Sand = 0.0;
-    R_Packed_Sand = 0.0;
-    R_Extra_Coins = 0.0;
-    R_Bonus_Coins = 0.0;
-    R_Orange_Box = 0.001;
-    R_Green_Box = 0.001;
-    R_Cyan_Box = 0.001;
-    R_Red_Box = 0.001;
-    R_Magenta_Box = 0.001;
-    R_Purple_Box = 0.001;
-    R_Blue_Box = 0.001;
-    R_Explosion = 0.0;
-    R_Huge_Explosion = 0.0;
-    R_Big_Explosion = 0.0;
-    R_Timed_Explosion = 0.0;
-    R_Enormous_Explosion = 0.0;
-    R_Blue_Key = 0.0001;
-    R_Red_Key = 0.0001;
-    R_Green_Key = 0.0001;
-    R_Yellow_Key = 0.0001;
-    R_Steel = 0.0;
-    R_Refined_Steel = 0.0;
-    R_Mystery_Steel = 0.0;
-    R_Stone = 0.01;
-    R_Ruby = 0.005;
-    R_Diamond = 0.02;
-    R_Gold = 0.01;
-    R_Silver = 0.03;
-    R_Calcite = 0.02;
-    R_Coal = 0.05;
-    R_Aquamarine = 0.005;
-    R_Pixie_Dust = 0.0001;
-    R_Emerald = 0.001;
-    R_Fossils = 0.0001;
-    R_Boxes = 0.0;
-    R_Old_Box = 0.0;
-    R_Unknown = 0.0;
-    R_Stone_Bricks = 0.0;
-    R_Ugly_Bricks = 0.0;
-    R_Brick = 0.0;
-    R_Forest_Crystal = 0.0001;
-    R_Blood_Crystal = 0.0001;
-    R_Sand_Crystal = 0.0001;
-    R_Ice_Crystal = 0.0001;
-    R_Snow_Crystal = 0.0001;
-    R_Ice = 0.0;
-    R_Packed_Snow = 0.0;
-    R_Hardened_Ice = 0.0;
-    R_Compressed_Ice = 0.0;
+    R_Dirt = 0;
+    R_Rich_Soil = 0;
+    R_Very_Rich_Soil = 0;
+    R_Extremly_Rich_Soil = 0;
+    R_Grass = 0;
+    R_Valunite = 0;
+    R_Dark_Valunite = 0;
+    R_Bamboo = 0;
+    R_Wood = 0;
+    R_Sandstone = 0;
+    R_Sand = 0;
+    R_Packed_Sand = 0;
+    R_Extra_Coins = 0;
+    R_Bonus_Coins = 0;
+    R_Orange_Box = 0.0001;
+    R_Green_Box = 0.0001;
+    R_Cyan_Box = 0.0001;
+    R_Red_Box = 0.0001;
+    R_Magenta_Box = 0.0001;
+    R_Purple_Box = 0.0001;
+    R_Blue_Box = 0;
+    R_Explosion = 0;
+    R_Huge_Explosion = 0;
+    R_Big_Explosion = 0;
+    R_Timed_Explosion = 0;
+    R_Enormous_Explosion = 0;
+    R_Blue_Key = 0;
+    R_Red_Key = 0;
+    R_Green_Key = 0;
+    R_Yellow_Key = 0;
+    R_Steel = 0;
+    R_Refined_Steel = 0;
+    R_Mystery_Steel = 0;
+    R_Stone = 0;
+    R_Ruby = 0;
+    R_Diamond = 0;
+    R_Gold = 0;
+    R_Silver = 0;
+    R_Calcite = 0;
+    R_Coal = 0;
+    R_Aquamarine = 0;
+    R_Pixie_Dust = 0;
+    R_Emerald = 0;
+    R_Fossils = 0;
+    R_Boxes = 0;
+    R_Old_Box = 0;
+    R_Unknown = 0;
+    R_Stone_Bricks = 0;
+    R_Ugly_Bricks = 0;
+    R_Brick = 0;
+    R_Forest_Crystal = 0;
+    R_Blood_Crystal = 0;
+    R_Sand_Crystal = 0;
+    R_Ice_Crystal = 0;
+    R_Snow_Crystal = 0;
+    R_Ice = 0;
+    R_Packed_Snow = 0;
+    R_Hardened_Ice = 0;
+    R_Compressed_Ice = 0;
   }
   
   public void Set_Main() {
@@ -5286,7 +6608,56 @@ public string currentSetMain = "Dirt";
     }
 
   }
-
+public void SetBlockValueMineral_1Star_1(){
+    R_Nothing = 0f;
+    R_Coal_One = 0.05f;
+    R_Coal_Few = 0.01f;    
+  }
+  public void SetBlockValue_1Star_1(){
+    R_Dirt = 0.01;
+    R_Sand = 0.99;
+  }
+  public void SetBlockValueMineral_1Star_2(){
+    R_Coal_One = 0.1f;
+    R_Coal_Few = 0.03f;    
+    R_Coal_Some = 0.01f;    
+  }
+  public void SetBlockValue_1Star_2(){
+    R_Dirt = 0.2;
+    R_Sand = 0.8;
+  }
+  public void SetBlockValueMineral_1Star_3(){
+    R_Coal_One = 0.3f;
+    R_Coal_Few = 0.08f;    
+    R_Coal_Some = 0.03f;    
+    R_Coal_Lots = 0.01f;    
+    R_Coal_Tons = 0.001f;    
+  }
+  public void SetBlockValue_1Star_3(){
+    R_Dirt = 0.99;
+    R_Sand = 0.01;
+  }
+  public void SetBlockValueMineral_1Star_4(){
+    R_Coal_One = 0.5f;
+    R_Coal_Few = 0.1f;    
+    R_Coal_Some = 0.07f;    
+    R_Coal_Lots = 0.03f;    
+    R_Coal_Tons = 0.005f;    
+  }
+  public void SetBlockValue_1Star_4(){
+    R_Dirt = 0.9;
+    
+  }
+  public void SetBlockValueMineral_1Star_5(){
+    //Replace Sunstone with Gold
+    R_Sunstone_One = 0.01;
+    R_Sunstone_Few = 0.003;
+  }
+  public void SetBlockValue_1Star_5(){
+    R_Dirt = 0.7;
+    
+    R_Rich_Soil = 0.1;
+  }
 	}
 	
 
