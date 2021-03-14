@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4467409991048568, guid: 70d6dfe08ec8a1447b4822e95e56918e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.64
       objectReference: {fileID: 0}
     - target: {fileID: 4467409991048568, guid: 70d6dfe08ec8a1447b4822e95e56918e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.78
       objectReference: {fileID: 0}
     - target: {fileID: 4467409991048568, guid: 70d6dfe08ec8a1447b4822e95e56918e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -62,6 +62,30 @@ PrefabInstance:
     - target: {fileID: 198360418936956786, guid: 70d6dfe08ec8a1447b4822e95e56918e, type: 3}
       propertyPath: looping
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198360418936956786, guid: 70d6dfe08ec8a1447b4822e95e56918e, type: 3}
+      propertyPath: lengthInSec
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 198360418936956786, guid: 70d6dfe08ec8a1447b4822e95e56918e, type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198360418936956786, guid: 70d6dfe08ec8a1447b4822e95e56918e, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 198360418936956786, guid: 70d6dfe08ec8a1447b4822e95e56918e, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 198360418936956786, guid: 70d6dfe08ec8a1447b4822e95e56918e, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 198360418936956786, guid: 70d6dfe08ec8a1447b4822e95e56918e, type: 3}
+      propertyPath: simulationSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 199129290115673994, guid: 70d6dfe08ec8a1447b4822e95e56918e, type: 3}
       propertyPath: m_Materials.Array.size
