@@ -3848,7 +3848,7 @@ using System.IO;
               double CurrentHealth = 0;
               double FullHealth = 0;
               
-              for(var i2 = 0;i2 < 4;i2++){
+              for(var i2 = 0;i2 < Num_Of_Blocks;i2++){
                 CurrentHealth += Mine_BlockHealth[NumOfBlockArray][NumOfStarsArray][i][Mine_BlockHealth[NumOfBlockArray][NumOfStarsArray][i].Count - ((Num_Of_Layers * Num_Of_Blocks) - i2)];
               }              
               FullHealth += Mine_BlockHealth[NumOfBlockArray][NumOfStarsArray][i][Mine_BlockHealth[NumOfBlockArray][NumOfStarsArray][i].Count - 1] * Num_Of_Blocks;
